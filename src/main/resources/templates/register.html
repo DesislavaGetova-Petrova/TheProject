@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="~{fragments/head}"></th:block>
+<body >
+
+<main class="p-5 align-content-center bg-blur my-register-div">
+    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Register</span>
+    <hr class="hr-3 w-25 bg-white"/>
+    <span class="text-center mt-2">
+            <img class="justify-content-center" src="../img/logo.png" alt="" width="200" >
+        </span>
+    </h1>
+    <form class="mx-auto w-25 bg-blur rounded" method="" action="/users/register" >
+
+
+
+        <div class="form-group" >
+            <div  class="label-holder textCol d-flex justify-content-center">
+                <label for="username" class="h4 mb-2 text-white">Username</label>
+            </div>
+            <input type="text" class="form-control" id="username" name="username" />
+            <small class="text-danger">Username error message</small>
+        </div>
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="email" class="h4 mb-2">Email</label>
+            </div>
+            <input type="email" class="form-control" id="email" name="email" />
+
+            <small class="text-danger">Email error message</small>
+        </div>
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label  for="password" class="h4 mb-2" >Password</label>
+            </div>
+            <input type="password" class="form-control" id="password" name="password" />
+            <small class="text-danger">Password error message</small>
+        </div>
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="confirmPassword" class="h4 mb-2">Confirm Password</label>
+            </div>
+            <input type="password" class="form-control" id="confirmPassword"
+                   name="confirmPassword" />
+        </div>
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-warning  mb-3" value="Register">Register</button>
+        </div>
+    </form>
+</main>
+
+<footer class="footer bg-transparent  py-2">
+    <div class="container-fluid text-center">
+		<div class="footer-background h5 text-white">
+           &copy; Spring team 2020. All rights reserved.
+		</div>
+	</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<!-- Contact form JS-->
+<script src="assets/mail/jqBootstrapValidation.js"></script>
+<script src="assets/mail/contact_me.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+</body>
+</html>
