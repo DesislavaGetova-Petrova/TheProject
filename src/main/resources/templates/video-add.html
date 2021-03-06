@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<th:block th:include="~{fragments/head}"></th:block>
+
+<body >
+<th:block th:include="~{fragments/nav}"></th:block>
+
+<main class="p-5 align-content-center bg-blur my-register-div">
+    <section class="page-section bg-light" id="resource-add">
+    <div class="row tm-mt-big justify-content-center">
+        <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
+            <div class="bg-white tm-block">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="tm-block-title d-inline-block">Добавете видео</h2>
+                    </div>
+                </div>
+                <div class="row mt-4 tm-edit-product-row">
+                    <div class="col-xl-7 col-lg-7 col-md-12">
+                        <form action="/video/add" method="POST"
+
+                              class="tm-edit-product-form" >
+                            <div class="input-group mb-3">
+                                <label for="resource">Изберете ресурс</label>
+                                <select name="resource" id="resource" class="custom-select">
+<!--                                    <option th:each="c : ${T(exam.exam.model.entity.GenreName).values()}" th:text="${c}" th:value="${c}" value="" selected>Select genre</option>-->
+                                </select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Наименование
+                                </label>
+                                <input  id="name" name ="name" type="text"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"/>
+
+                            </div>
+                            <div class="input-group mb-3 justify-content-center">
+
+                                <small class="text-danger"></small>
+
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="videoUrl" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">ВидеоUrl
+                                </label>
+                                <input id="videoUrl" name="videoUrl" type="text"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                       data-large-mode="true"/>
+                            </div>
+                            <div class="input-group mb-3 justify-content-center">
+
+                                <small  class="text-danger"></small>
+
+                            </div>
+
+
+                            <div class="input-group mb-3">
+                                <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+                                    <button type="submit" class="btn btn-primary">Добави
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">
+                        <img src="/img/sbornik.png" alt="Exercise picture" width="100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    </main>
+</div>
+
+
+</body>
+
+</html>

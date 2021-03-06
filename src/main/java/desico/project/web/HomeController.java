@@ -2,10 +2,7 @@ package desico.project.web;
 
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
@@ -15,9 +12,14 @@ public class HomeController {
         return "index";
     }
 
-//    @GetMapping("/home")
-//    public String home() {
-//        return "index";
-//    }
+    @GetMapping("/info")
+    public String info() {
+        return "info";
+    }
+    @GetMapping("/offer")
+    public String ourOffer() {
+        return "offer";
+    }
+
 
 }

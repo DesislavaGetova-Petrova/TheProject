@@ -1,12 +1,25 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 <th:block th:include="~{fragments/head}"></th:block>
 <th:block>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="nav-link" href="#page-top">
-                <img src="/img/logo.png" width="200px" >
+            <a class="nav-link" href="/">
+                <img src="/img/logo.png" width="200px"  >
             </a>
+            <div class="collapse navbar-collapse  d-flex justify-content-end">
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  АДМИНИСТРИРАНЕ
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/statistics">Statistics</a>
+                    <a class="dropdown-item" href="/resources/add">ВЪВЕДИ РЕСУРС</a>
+                    <a class="dropdown-item" href="/video/add">ВЪВЕДИ ВИДЕО here</a>
+                </div>
+            </div>
             <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -16,12 +29,32 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
 
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">какво предлагаме</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio"> виж ресурсите</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/users/login">влез в профила</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/users/register">регистрирай се</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/offer">какво предлагаме</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger"sec:authorize="isAuthenticated()" href="/resources/view"> към решенията</a></li>
+                    <li class="nav-item">
+
+                        <a class="nav-link js-scroll-trigger" sec:authorize="!isAuthenticated()"
+                                            th:href="@{/users/login}"> влез в профила
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger"  sec:authorize="!isAuthenticated()"
+                                            th:href="@{/users/register}"> регистрирай се
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger"  sec:authorize="isAuthenticated()">
+                            <form th:action="@{/logout}" method="POST">
+                        <button type="submit" class="btn btn-primary" >
+                            Излез
+                        </button>
+                            </form>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
+       </div>
     </nav>
 </th:block>

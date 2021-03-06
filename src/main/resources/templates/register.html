@@ -1,70 +1,111 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:include="~{fragments/head}"></th:block>
-<body >
+<body>
+<th:block th:include="~{fragments/nav}"></th:block>
 
 <main class="p-5 align-content-center bg-blur my-register-div">
-    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Register</span>
-    <hr class="hr-3 w-25 bg-white"/>
-    <span class="text-center mt-2">
-            <img class="justify-content-center" src="../img/logo.png" alt="" width="200" >
-        </span>
-    </h1>
-    <form class="mx-auto w-25 bg-blur rounded" method="" action="/users/register" >
+    <section class="page-section" id="register">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Register</span></h1>
+                <hr class="hr-3 w-25 bg-white"/>
+                <form class="mx-auto w-25 bg-blur"  th:action="@{/users/register}" th:object="${registrationBindingModel}" th:method="POST">
+                    <div class="form-group">
+                        <div class="label-holder textCol d-flex justify-content-center">
+                            <h1 class="h3 mb-3 fw-normal">Mоля въведете </h1>
+                        </div>
+                        <label for="inputUsername" class="visually-hidden">Username</label>
+                        <input name="username"
+                               th:value="*{username}"
+                               th:errorclass="is-invalid"
+                               type="text"
+                               id="inputUsername"
+                               class="form-control"
+                               aria-describedby="usernameHelpInline">
+                        <small id="usernameError"
+                               class="invalid-feedback text-light form-text bg-danger rounded">Username length must be more than 3 characters</small>
 
+                        <small th:if="${userExistsError}" id="usernameUniqueError"
+                               class="text-light form-text bg-danger rounded">Username is already occupied</small>
+                    </div>
+                    <div class="form-group">
+                        <div class="label-holder textCol d-flex justify-content-center">
+                            <label for="inputEmail" class="visually-hidden">Email</label>
+                        </div>
+                        <input name="email"
+                               th:value="*{email}"
+                               th:errorclass="is-invalid"
+                               type="text"
+                               id="inputEmail"
+                               class="form-control"
+                               aria-describedby="emailHelpInline">
+                        <small id="emailError"
+                               class="invalid-feedback text-light form-text bg-danger rounded">Must be valid email</small>
+                    </div>
+                    <div class="form-group">
+                        <div class="label-holder  textCol d-flex justify-content-center">
+                            <label for="inputPassword" class="visually-hidden">Password</label>
+                        </div>
+                        <input name="password"
+                               th:errorclass="is-invalid"
+                               type="password"
+                               id="inputPassword"
+                               class="form-control"
+                               aria-describedby="passwordHelpInline">
+                        <small id="passwordError"
+                               class="invalid-feedback text-light form-text bg-danger rounded">
+                            Password length must be between 5 and 20 characters and passwords should match.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <div class="label-holder  textCol d-flex justify-content-center">
+                            <label for="inputConfirmPassword" class="visually-hidden">Confirm password</label>
+                        </div>
+                        <input name="confirmPassword"
+                               th:errorclass="is-invalid"
+                               type="password"
+                               id="inputConfirmPassword"
+                               class="form-control"
+                               aria-describedby="confirmPasswordHelpInline">
+                        <small id="confirmPasswordError"
+                               class="invalid-feedback text-light form-text bg-danger rounded">
+                            Password length must be between 5 and 20 characters and passwords should match.
+                        </small>
+                    </div>
 
-
-        <div class="form-group" >
-            <div  class="label-holder textCol d-flex justify-content-center">
-                <label for="username" class="h4 mb-2 text-white">Username</label>
+                    <div class="button-holder d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary" >Register</button>
+                    </div>
+                </form>
             </div>
-            <input type="text" class="form-control" id="username" name="username" />
-            <small class="text-danger">Username error message</small>
         </div>
-        <div class="form-group">
-            <div class="label-holder text-white textCol d-flex justify-content-center">
-                <label for="email" class="h4 mb-2">Email</label>
-            </div>
-            <input type="email" class="form-control" id="email" name="email" />
+    </section>
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-lg-left">Copyright © Дома6ното 2021</div>
+                <div class="col-lg-4 my-3 my-lg-0">
 
-            <small class="text-danger">Email error message</small>
-        </div>
-        <div class="form-group">
-            <div class="label-holder text-white textCol d-flex justify-content-center">
-                <label  for="password" class="h4 mb-2" >Password</label>
-            </div>
-            <input type="password" class="form-control" id="password" name="password" />
-            <small class="text-danger">Password error message</small>
-        </div>
-        <div class="form-group">
-            <div class="label-holder text-white textCol d-flex justify-content-center">
-                <label for="confirmPassword" class="h4 mb-2">Confirm Password</label>
-            </div>
-            <input type="password" class="form-control" id="confirmPassword"
-                   name="confirmPassword" />
-        </div>
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
 
-        <div class="button-holder d-flex justify-content-center">
-            <button type="submit" class="btn btn-warning  mb-3" value="Register">Register</button>
+                </div>
+                <div class="col-lg-4 text-lg-right">
+                    <a class="mr-3" href="#!">Privacy Policy</a>
+                    <a href="#!">Terms of Use</a>
+                </div>
+            </div>
         </div>
-    </form>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Contact form JS-->
+    <script src="assets/mail/jqBootstrapValidation.js"></script>
+    <script src="assets/mail/contact_me.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
 </main>
-
-<footer class="footer bg-transparent  py-2">
-    <div class="container-fluid text-center">
-		<div class="footer-background h5 text-white">
-           &copy; Spring team 2020. All rights reserved.
-		</div>
-	</div>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Third party plugin JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-<!-- Contact form JS-->
-<script src="assets/mail/jqBootstrapValidation.js"></script>
-<script src="assets/mail/contact_me.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
 </body>
 </html>

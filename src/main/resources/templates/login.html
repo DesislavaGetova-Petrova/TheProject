@@ -3,6 +3,7 @@
 <th:block th:include="~{fragments/head}"></th:block>
 
   <body >
+  <th:block th:include="~{fragments/nav}"></th:block>
 
   <main class="p-5 align-content-center bg-blur my-register-div">
         <section class="page-section" id="login">
@@ -10,26 +11,48 @@
             <div class="text-center">
               <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Login</span></h1>
               <hr class="hr-3 w-25 bg-white"/>
+              <div th:if="${bad_credentials}" class="alert alert-danger" role="alert">
+                This username and password combination does not exist.
+              </div>
 
-              <form>
-                <img class="mb-4" src="../img/logo.png" alt="" width="200" >
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-                <label for="inputEmail" class="visually-hidden">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+              <form th:action="@{/users/login}"
+                    method="POST">
+
+                <h1 class="h3 mb-3 fw-normal">Mоля въведете </h1>
+
+                <label for="inputUsername" class="visually-hidden">Username</label>
+                <input type="text"   name="username" th:value="${username}" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
                 <label for="inputPassword" class="visually-hidden">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <div class="checkbox mb-3">
+                <input type="password"   name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <p>
 
-                </div>
+                </p>
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+
               </form>
             </div>
           </div>
 
         </section>
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-lg-left">Copyright © Дома6ното 2021</div>
+          <div class="col-lg-4 my-3 my-lg-0">
+
+            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+
+          </div>
+          <div class="col-lg-4 text-lg-right">
+            <a class="mr-3" href="#!">Privacy Policy</a>
+            <a href="#!">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
   </main>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Third party plugin JS-->
