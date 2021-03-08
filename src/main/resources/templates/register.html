@@ -24,10 +24,10 @@
                                class="form-control"
                                aria-describedby="usernameHelpInline">
                         <small id="usernameError"
-                               class="invalid-feedback text-light form-text bg-danger rounded">Username length must be more than 3 characters</small>
+                               class="invalid-feedback text-light form-text bg-danger rounded">Username трябва да съдържа повече от три символа!</small>
 
                         <small th:if="${userExistsError}" id="usernameUniqueError"
-                               class="text-light form-text bg-danger rounded">Username is already occupied</small>
+                               class="text-light form-text bg-danger rounded">Този username вече е зает! </small>
                     </div>
                     <div class="form-group">
                         <div class="label-holder textCol d-flex justify-content-center">
@@ -36,12 +36,12 @@
                         <input name="email"
                                th:value="*{email}"
                                th:errorclass="is-invalid"
-                               type="text"
+                               type="email"
                                id="inputEmail"
                                class="form-control"
                                aria-describedby="emailHelpInline">
                         <small id="emailError"
-                               class="invalid-feedback text-light form-text bg-danger rounded">Must be valid email</small>
+                               class="invalid-feedback text-light form-text bg-danger rounded">Моля посочете валиден email!</small>
                     </div>
                     <div class="form-group">
                         <div class="label-holder  textCol d-flex justify-content-center">
@@ -55,7 +55,7 @@
                                aria-describedby="passwordHelpInline">
                         <small id="passwordError"
                                class="invalid-feedback text-light form-text bg-danger rounded">
-                            Password length must be between 5 and 20 characters and passwords should match.
+                            Password трябва да съдържа между 5 и 20 символа!
                         </small>
                     </div>
                     <div class="form-group">
@@ -70,7 +70,7 @@
                                aria-describedby="confirmPasswordHelpInline">
                         <small id="confirmPasswordError"
                                class="invalid-feedback text-light form-text bg-danger rounded">
-                            Password length must be between 5 and 20 characters and passwords should match.
+                            Confirm password трябва да съдържа между 5 и 20 символа и да съвпада с Password!
                         </small>
                     </div>
 

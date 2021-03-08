@@ -74,7 +74,7 @@ public class UserController {
 
         userService.registerAndLoginUser(userServiceModel);
 
-        return "redirect:/";
+        return "redirect:/chapter/view";
     }
     @PostMapping("/login-error")
     public ModelAndView failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
@@ -84,7 +84,7 @@ public class UserController {
         modelAndView.addObject("bad_credentials", true);
         modelAndView.addObject("username", username);
 
-        modelAndView.setViewName("/login");
+        modelAndView.setViewName("login");
 
         return modelAndView;
     }

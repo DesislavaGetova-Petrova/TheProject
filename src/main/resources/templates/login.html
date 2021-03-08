@@ -11,8 +11,8 @@
             <div class="text-center">
               <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Login</span></h1>
               <hr class="hr-3 w-25 bg-white"/>
-              <div th:if="${bad_credentials}" class="alert alert-danger" role="alert">
-                This username and password combination does not exist.
+              <div th:if="${bad_credentials}" class="alert alert-danger text-light form-text bg-danger rounded" role="alert" >
+                Тази комбинация от username и password несъществува! Моля опитай отново или избери "РЕГИСТРИРАЙ СЕ"!
               </div>
 
               <form th:action="@{/users/login}"

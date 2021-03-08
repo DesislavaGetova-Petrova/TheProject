@@ -3,8 +3,9 @@ package desico.project.model.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
 @Entity
-@Table(name="unitNames")
+@Table(name="units")
 public class UnitNameEntity extends BaseEntity {
     private String unitName;
 
@@ -20,4 +21,5 @@ public class UnitNameEntity extends BaseEntity {
         this.unitName = unitName;
         return this;
     }
+
 }

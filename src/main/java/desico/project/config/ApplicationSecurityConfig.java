@@ -31,7 +31,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 // allow access to index, user login and registration to anyone
                         antMatchers("/","/info","/offer","/users/login", "/users/register").permitAll().
                 // protect all other pages.
-                        antMatchers("/resources/view","/resources/add","/video/view", "/video/view" ).authenticated().
+                        antMatchers("/chapter/view","/chapter/add","/video/view", "/unit/add" ).authenticated().
                 and().
                 // configure login with HTML form
                         formLogin().
@@ -42,7 +42,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 // the name of the user password input field in OUR login form is password (optional)
                         passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
                 // on login success redirect here
-                        defaultSuccessUrl("/resources/view").
+                        defaultSuccessUrl("/chapter/view").
                 // on login failure redirect here
                         failureForwardUrl("/users/login-error").
         and().

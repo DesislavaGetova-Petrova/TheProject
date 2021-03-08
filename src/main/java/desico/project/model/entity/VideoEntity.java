@@ -6,8 +6,7 @@ import java.util.List;
 @Entity
 @Table(name="videos")
 public class VideoEntity extends BaseEntity{
-    private ResourceEntity resource;
-
+    private ChapterNameEntity chapterName;
     private String videoName;
     private String videoUrl;
     private List<RatingEntity> ratings;
@@ -16,12 +15,12 @@ public class VideoEntity extends BaseEntity{
 
     }
     @ManyToOne
-    public ResourceEntity getResource() {
-        return resource;
+    public ChapterNameEntity getChapterName() {
+        return chapterName;
     }
 
-    public VideoEntity setResource(ResourceEntity resource) {
-        this.resource = resource;
+    public VideoEntity setChapterName(ChapterNameEntity resource) {
+        this.chapterName = resource;
         return this;
     }
     @Column(name="video_name",nullable = false,unique = true)

@@ -16,8 +16,9 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="/statistics">Statistics</a>
-                    <a class="dropdown-item" href="/resources/add">ВЪВЕДИ РЕСУРС</a>
-                    <a class="dropdown-item" href="/video/add">ВЪВЕДИ ВИДЕО here</a>
+                    <a class="dropdown-item" href="/unit/add">Въведи нов раздел</a>
+                    <a class="dropdown-item" href="/chapter/add">Въведи нова тема </a>
+                    <a class="dropdown-item" href="/video/add">Въведи ново видео-решение</a>
                 </div>
             </div>
             <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
@@ -31,7 +32,7 @@
 
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/offer">какво предлагаме</a></li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger"sec:authorize="isAuthenticated()" href="/resources/view"> към решенията</a></li>
+                        <a class="nav-link js-scroll-trigger"sec:authorize="isAuthenticated()" href="/chapter/view"> към решенията</a></li>
                     <li class="nav-item">
 
                         <a class="nav-link js-scroll-trigger" sec:authorize="!isAuthenticated()"
@@ -39,7 +40,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger"  sec:authorize="!isAuthenticated()"
+                        <a class="nav-link js-scroll-trigger" sec:authorize="!isAuthenticated()"
                                             th:href="@{/users/register}"> регистрирай се
                         </a>
                     </li>
