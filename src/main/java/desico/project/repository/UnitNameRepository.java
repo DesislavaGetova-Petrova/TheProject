@@ -14,4 +14,5 @@ public interface UnitNameRepository extends JpaRepository<UnitNameEntity,String 
 List<String>findAllUnitNames();
 
 UnitNameEntity findByUnitName(String unitName);
+
 }

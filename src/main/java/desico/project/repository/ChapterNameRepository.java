@@ -20,4 +20,12 @@ public interface ChapterNameRepository extends JpaRepository<ChapterNameEntity,S
 
 
 
+
+
+
+
+
+
+
+
 }

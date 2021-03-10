@@ -56,6 +56,16 @@ private final ChapterNameService chapterNameService;
         return  "redirect:/";
     }
     @GetMapping("/view")
+    public String view(Model model){
+        if(!model.containsAttribute("videos")){
+
+            model.addAttribute("chapterNames",chapterNameService.findAllChapterNames());
+            model.addAttribute("videoNames",videoService.findAllVideoNames());
+
+        }
+        return "chapter-view";
+    }
+    @GetMapping("/view")
     public String view(){
         return "video-view";
     }

@@ -8,6 +8,8 @@ import desico.project.service.VideoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class VideoServiceImpl implements VideoService {
     private final VideoRepository videoRepository;
@@ -26,6 +28,11 @@ public class VideoServiceImpl implements VideoService {
         videoEntity.setChapterName(this.chapterNameService.findByChapterName(videoServiceModel.getChapterName()));
         this.videoRepository.saveAndFlush(videoEntity);
 
+    }
+
+    @Override
+    public List<String> findAllVideoNames() {
+        return videoRepository.findAllByVideoName();
     }
 
 }

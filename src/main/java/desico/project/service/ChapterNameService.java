@@ -9,11 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ChapterNameService {
+
     List<String> findAllChapterNames();
 
     void add(ChapterNameServiceModel chapterNameServiceModel);
     Optional<ChapterNameEntity> findByUnitName(UnitNameEntity unitNameEntity);
     ChapterNameEntity findByChapterName(String chapterName);
+
 
 
 }

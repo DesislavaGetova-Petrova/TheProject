@@ -29,10 +29,7 @@ public class ChapterNameController {
         this.unitNameService = unitNameService;
     }
 
-    @GetMapping("/view")
-    public String view(){
-        return "chapter-view";
-    }
+
 
     @GetMapping("/add")
     public String add(Model model) {

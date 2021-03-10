@@ -4,93 +4,107 @@
 <body id="page-top">
 <!-- Navigation-->
 <th:block th:include="~{fragments/nav}"></th:block>
-<!-- Masthead-->
-
-
-
 <!-- Ресурси-->
-<section class="page-section bg-light" id="chapter-view">
-    <form action="/chapter/view" method="GET"  class="tm-edit-product-form" >
+<main class="p-5 align-content-center bg-blur my-register-div">
+    <section class="page-section" id="offer">
+        <div class="container">
+            <div class="text-center">
+    <form th:action="@{/chapter/view}" method="GET"  class="tm-edit-product-form" >
     <!-- Page Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <h1 class="my-4">Ресурси</h1>
-                <div class="list-group">
-                    <a href="#portfolio" class="list-group-item">За 6-ти клас</a>
-                </div>
-            </div>
-            <!-- /.col-lg-3 -->
-            <div class="col-lg-9">
+
+            <option  th:each="t : ${unitNames}" th:text="${t}" th:value="${t}">
+                <a href="#" class="list-group-item list-group-item-action active">Cras justo odio</a>
+            </option>
+
+<!--            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>-->
 
 
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <video width="320" height="240" controls controlsList="nodownload" >
-                                    <source src="/img/video/стр112зад28.mp4" type="video/mp4">
-                                </video>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="/video/view">стр.112-зад.28</a>
-                                </h4>
-                                <h5>безплатно</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                            </div>
-                            <div class="card-footer">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">Item Two</a>
-                                </h4>
-                                <h5>безплатно</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">Item Three</a>
-                                </h4>
-                                <h5>6.99 лв.</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                            </div>
-                        </div>
-                    </div>
 
 
-                </div>
-                <!-- /.row -->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--&lt;!&ndash;            <div class="col-lg-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div  th:each="t : ${unitNames}" >&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div th:each="t : ${chapterNames}" >&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a href="#portfolio" class="list-group-item"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            &lt;!&ndash; /.col-lg-3 &ndash;&gt;-->
+<!--            <div class="col-lg-9">-->
 
-            </div>
-            <!-- /.col-lg-9 -->
 
-        </div>
-        <!-- /.row -->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-4 col-md-6 mb-4">-->
+<!--                        <div class="card h-100">-->
+<!--                            <div class="embed-responsive embed-responsive-16by9">-->
+<!--                                <video width="320" height="240" controls controlsList="nodownload" >-->
+<!--                                    <source src="/img/video/стр112зад28.mp4" type="video/mp4">-->
+<!--                                </video>-->
+<!--                            </div>-->
+<!--                            <div class="card-body">-->
+<!--                                <h4 class="card-title">-->
+<!--                                    <a href="/video/view">стр.112-зад.28</a>-->
+<!--                                </h4>-->
+<!--                                <h5>безплатно</h5>-->
+<!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>-->
+<!--                            </div>-->
+<!--                            <div class="card-footer">-->
 
-    </div>
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-lg-4 col-md-6 mb-4">-->
+<!--                        <div class="card h-100">-->
+
+<!--                            <div class="card-body">-->
+<!--                                <h4 class="card-title">-->
+<!--                                    <a href="#">Item Two</a>-->
+<!--                                </h4>-->
+<!--                                <h5>безплатно</h5>-->
+<!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>-->
+<!--                            </div>-->
+<!--                            <div class="card-footer">-->
+<!--                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-lg-4 col-md-6 mb-4">-->
+<!--                        <div class="card h-100">-->
+<!--                            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>-->
+<!--                            <div class="card-body">-->
+<!--                                <h4 class="card-title">-->
+<!--                                    <a href="#">Item Three</a>-->
+<!--                                </h4>-->
+<!--                                <h5>6.99 лв.</h5>-->
+<!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>-->
+<!--                            </div>-->
+<!--                            <div class="card-footer">-->
+<!--                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+<!--                </div>-->
+<!--                &lt;!&ndash; /.row &ndash;&gt;-->
+
+<!--            </div>-->
+<!--            &lt;!&ndash; /.col-lg-9 &ndash;&gt;-->
+
+<!--        </div>-->
+<!--        &lt;!&ndash; /.row &ndash;&gt;-->
+
+<!--    </div>-->
     </form>
-    <!-- /.container -->
+                <!-- /.container --></div>
+            </div>
 </section>
+</main>
 
 <!-- Footer-->
 <footer class="footer py-4">
