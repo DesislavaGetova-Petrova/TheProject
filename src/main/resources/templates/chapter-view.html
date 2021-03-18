@@ -1,134 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:include="~{fragments/head}"></th:block>
-<body id="page-top">
-<!-- Navigation-->
-<th:block th:include="~{fragments/nav}"></th:block>
-<!-- Ресурси-->
+<body>
 <main class="p-5 align-content-center bg-blur my-register-div">
-    <section class="page-section" id="offer">
+    <th:block th:include="~{fragments/nav}"></th:block>
+    <section class="page-section bg-light" id="unit-view">
         <div class="container">
-            <div class="text-center">
-    <form th:action="@{/chapter/view}" method="GET"  class="tm-edit-product-form" >
-    <!-- Page Content -->
-
-            <option  th:each="t : ${unitNames}" th:text="${t}" th:value="${t}">
-                <a href="#" class="list-group-item list-group-item-action active">Cras justo odio</a>
-            </option>
-
-<!--            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>-->
-<!--            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>-->
-<!--            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>-->
-<!--            <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>-->
-
-
-
-
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--&lt;!&ndash;            <div class="col-lg-3">&ndash;&gt;-->
-<!--&lt;!&ndash;                <div  th:each="t : ${unitNames}" >&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div th:each="t : ${chapterNames}" >&ndash;&gt;-->
-<!--&lt;!&ndash;                        <a href="#portfolio" class="list-group-item"></a>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--            &lt;!&ndash; /.col-lg-3 &ndash;&gt;-->
-<!--            <div class="col-lg-9">-->
-
-
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-4 col-md-6 mb-4">-->
-<!--                        <div class="card h-100">-->
-<!--                            <div class="embed-responsive embed-responsive-16by9">-->
-<!--                                <video width="320" height="240" controls controlsList="nodownload" >-->
-<!--                                    <source src="/img/video/стр112зад28.mp4" type="video/mp4">-->
-<!--                                </video>-->
-<!--                            </div>-->
-<!--                            <div class="card-body">-->
-<!--                                <h4 class="card-title">-->
-<!--                                    <a href="/video/view">стр.112-зад.28</a>-->
-<!--                                </h4>-->
-<!--                                <h5>безплатно</h5>-->
-<!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>-->
-<!--                            </div>-->
-<!--                            <div class="card-footer">-->
-
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <div class="col-lg-4 col-md-6 mb-4">-->
-<!--                        <div class="card h-100">-->
-
-<!--                            <div class="card-body">-->
-<!--                                <h4 class="card-title">-->
-<!--                                    <a href="#">Item Two</a>-->
-<!--                                </h4>-->
-<!--                                <h5>безплатно</h5>-->
-<!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>-->
-<!--                            </div>-->
-<!--                            <div class="card-footer">-->
-<!--                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <div class="col-lg-4 col-md-6 mb-4">-->
-<!--                        <div class="card h-100">-->
-<!--                            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>-->
-<!--                            <div class="card-body">-->
-<!--                                <h4 class="card-title">-->
-<!--                                    <a href="#">Item Three</a>-->
-<!--                                </h4>-->
-<!--                                <h5>6.99 лв.</h5>-->
-<!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>-->
-<!--                            </div>-->
-<!--                            <div class="card-footer">-->
-<!--                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-
-<!--                </div>-->
-<!--                &lt;!&ndash; /.row &ndash;&gt;-->
-
-<!--            </div>-->
-<!--            &lt;!&ndash; /.col-lg-9 &ndash;&gt;-->
-
-<!--        </div>-->
-<!--        &lt;!&ndash; /.row &ndash;&gt;-->
-
-<!--    </div>-->
-    </form>
-                <!-- /.container --></div>
+            <div class="col-12">
+                <th:block th:include="~{fragments/nav}"></th:block>
             </div>
-</section>
-</main>
 
-<!-- Footer-->
-<footer class="footer py-4">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-4 text-lg-left">Copyright © Дома6ното 2021</div>
-            <div class="col-lg-4 my-3 my-lg-0">
+            <div class="row tm-mt-big justify-content-center">
+                <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
+                    <!--                        <div class="col-12">-->
+                    <h2 class="tm-block-title d-inline-block">Моля изберете тема</h2>
+                    <p>Важно! Достъпни са само тези теми, към които има добавени видео решения.</p>
 
-                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                    <div th:each="c : ${chapterNameEntity}" th:object="${c}">
+                        <a th:href="@{/video/viewAll/{chapterName}(chapterName =*{chapterName})}"
+                           class="list-group-item list-group-item-action list-group-item-light"
+                           th:text="${c.chapterName}" th:value="${c.chapterName}">
+                        </a>
+                    </div>
 
-            </div>
-            <div class="col-lg-4 text-lg-right">
-                <a class="mr-3" href="#!">Privacy Policy</a>
-                <a href="#!">Terms of Use</a>
+                    <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">
+                        <img src="/img/sbornik.png" alt="Exercise picture" width="100%">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
-<!-- Bootstrap core JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Third party plugin JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
+        <th:block th:include="~{fragments/fot}"></th:block>
+
+    </section>
+</main>
 </body>
 </html>

@@ -16,5 +16,6 @@ public interface UserService {
     List<String> findAllUserNames();
 
     void changeRole(String username, String role);
+    void deleteRole(String username, String role);
 
 }

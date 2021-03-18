@@ -30,6 +30,11 @@ public class UnitNameServiceImpl implements UnitNameService {
         return unitNameRepository.findByUnitName(unitName);
     }
 
+    @Override
+    public List<UnitNameEntity> findAll() {
+        return unitNameRepository.findAll();
+    }
+
 
     @Override
     public List<String> findAllUnitNames() {

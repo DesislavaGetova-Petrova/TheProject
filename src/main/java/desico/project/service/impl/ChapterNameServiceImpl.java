@@ -43,7 +43,7 @@ public class ChapterNameServiceImpl implements ChapterNameService {
     }
 
     @Override
-    public Optional<ChapterNameEntity> findByUnitName(UnitNameEntity unitNameEntity) {
+    public List<ChapterNameEntity> findByUnitName(UnitNameEntity unitNameEntity) {
        return chapterNameRepository.findByUnitName(unitNameEntity);
     }
 

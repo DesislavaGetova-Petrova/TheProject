@@ -16,9 +16,11 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="/roles/add">Въведи нова роля</a>
+                    <a class="dropdown-item" href="/roles/delete">Изтрий роля</a>
                     <a class="dropdown-item" href="/unit/add">Въведи нов раздел</a>
                     <a class="dropdown-item" href="/chapter/add">Въведи нова тема </a>
-                    <a class="dropdown-item" href="/video/add">Въведи ново видео-решение</a>
+                    <a class="dropdown-item" href="/video/addLimited">Въведи ново видео-решение до 10МВ</a>
+                    <a class="dropdown-item" href="/video/add">Въведи ново видео-решение > 20МВ</a>
                 </div>
             </div>
             <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
@@ -32,7 +34,7 @@
 
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/offer">какво предлагаме</a></li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger"sec:authorize="isAuthenticated()" href="/chapter/view"> към решенията</a></li>
+                        <a class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()" th:href="@{/unit/view}"> към решенията</a></li>
                     <li class="nav-item">
 
                         <a class="nav-link js-scroll-trigger" sec:authorize="!isAuthenticated()"

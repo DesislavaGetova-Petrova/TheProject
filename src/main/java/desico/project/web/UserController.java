@@ -74,7 +74,7 @@ public class UserController {
 
         userService.registerAndLoginUser(userServiceModel);
 
-        return "redirect:/chapter/view";
+        return "redirect:/video/add";
     }
     @PostMapping("/login-error")
     public ModelAndView failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)

@@ -8,6 +8,7 @@ public class VideoViewModel {
     private String chapterName;
     private String videoName;
     private String videoUrl;
+    private Float stars;
 
     public VideoViewModel() {
     }
@@ -20,7 +21,6 @@ public class VideoViewModel {
         this.id = id;
         return this;
     }
-
 
 
     public String getChapterName() {
@@ -47,6 +47,15 @@ public class VideoViewModel {
 
     public VideoViewModel setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
+        return this;
+    }
+
+    public Float getStars() {
+        return stars;
+    }
+
+    public VideoViewModel setStars(Float stars) {
+        this.stars = stars;
         return this;
     }
 }

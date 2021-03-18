@@ -28,5 +28,16 @@ public class RoleController {
         userService.changeRole(username,role);
         return "redirect:/";
     }
+    @GetMapping("/delete")
+    public String deleteRole(Model model){
+        model.addAttribute("usernames",userService.findAllUserNames());
+        return "role-delete";
+    }
+    @PostMapping("/delete")
+    public String deleteCofirm(@RequestParam String username,
+                            @RequestParam String role){
+        userService.deleteRole(username,role);
+        return "redirect:/";
+    }
 
 }

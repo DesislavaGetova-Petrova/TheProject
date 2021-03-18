@@ -13,7 +13,7 @@ public interface ChapterNameService {
     List<String> findAllChapterNames();
 
     void add(ChapterNameServiceModel chapterNameServiceModel);
-    Optional<ChapterNameEntity> findByUnitName(UnitNameEntity unitNameEntity);
+    List<ChapterNameEntity> findByUnitName(UnitNameEntity unitNameEntity);
     ChapterNameEntity findByChapterName(String chapterName);
 
 

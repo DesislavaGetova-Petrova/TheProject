@@ -1,6 +1,7 @@
 package desico.project.model.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -9,7 +10,7 @@ public class VideoEntity extends BaseEntity{
     private ChapterNameEntity chapterName;
     private String videoName;
     private String videoUrl;
-    private List<RatingEntity> ratings;
+    private Float stars;
 
     public VideoEntity() {
 
@@ -42,13 +43,13 @@ public class VideoEntity extends BaseEntity{
         this.videoUrl = video;
         return this;
     }
-    @OneToMany
-    public List<RatingEntity> getRatings() {
-        return ratings;
+    @Column
+    public Float getStars() {
+        return stars;
     }
 
-    public VideoEntity setRatings(List<RatingEntity> rating) {
-        this.ratings = rating;
+    public VideoEntity setStars(Float stars) {
+        this.stars = stars;
         return this;
     }
 }

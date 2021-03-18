@@ -51,4 +51,10 @@ public class UnitNameController {
             return "redirect:/";
         }
     }
+    @GetMapping("/view")
+    public String view(Model model) {
+
+            model.addAttribute("unitNamesEnteties",unitNameService.findAll());
+
+        return "unit-view";}
 }

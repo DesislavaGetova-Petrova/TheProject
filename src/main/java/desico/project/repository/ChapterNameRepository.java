@@ -15,7 +15,7 @@ public interface ChapterNameRepository extends JpaRepository<ChapterNameEntity,S
     @Query("select e.chapterName from ChapterNameEntity as e ")
     List<String> findAllChapterNames();
 
-    Optional<ChapterNameEntity>findByUnitName(UnitNameEntity unitNameEntity);
+   List<ChapterNameEntity>findByUnitName(UnitNameEntity unitNameEntity);
     ChapterNameEntity findByChapterName(String chapterName);
 
 

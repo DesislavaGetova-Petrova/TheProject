@@ -1,21 +1,25 @@
-package desico.project.model.binding;
+package desico.project.model.service;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-public class VideoAddBindingModel {
+public class VideoServiceModelCloud {
     private String chapterName;
     private String videoName;
-    private String videoUrl;
+    private MultipartFile videoUrl;
 
-    public VideoAddBindingModel() {
+
+
+    public VideoServiceModelCloud() {
     }
     @NotEmpty
     public String getChapterName() {
         return chapterName;
     }
 
-    public VideoAddBindingModel setChapterName(String chapterName) {
+    public VideoServiceModelCloud setChapterName(String chapterName) {
         this.chapterName = chapterName;
         return this;
     }
@@ -25,17 +29,19 @@ public class VideoAddBindingModel {
         return videoName;
     }
 
-    public VideoAddBindingModel setVideoName(String videoName) {
+    public VideoServiceModelCloud setVideoName(String videoName) {
         this.videoName = videoName;
         return this;
     }
-    @NotEmpty(message = "Полето не може да е празно!")
-    public String getVideoUrl() {
+    @NotEmpty
+    public MultipartFile getVideoUrl() {
         return videoUrl;
     }
 
-    public VideoAddBindingModel setVideoUrl(String videoUrl) {
+    public VideoServiceModelCloud setVideoUrl(MultipartFile videoUrl) {
         this.videoUrl = videoUrl;
         return this;
     }
+
+
 }
