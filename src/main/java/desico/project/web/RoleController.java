@@ -20,13 +20,14 @@ public class RoleController {
     @GetMapping("/add")
     public String addRole(Model model){
         model.addAttribute("usernames",userService.findAllUserNames());
+
         return "role-add";
     }
     @PostMapping("/add")
     public String addCofirm(@RequestParam String username,
-                            @RequestParam String role){
+                            @RequestParam String role, Model model){
         userService.changeRole(username,role);
-        return "redirect:/";
+        return "role-added";
     }
     @GetMapping("/delete")
     public String deleteRole(Model model){
@@ -37,7 +38,7 @@ public class RoleController {
     public String deleteCofirm(@RequestParam String username,
                             @RequestParam String role){
         userService.deleteRole(username,role);
-        return "redirect:/";
+        return "role-deleted";
     }
 
 }

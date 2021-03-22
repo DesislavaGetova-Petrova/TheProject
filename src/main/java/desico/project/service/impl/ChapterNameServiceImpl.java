@@ -43,13 +43,19 @@ public class ChapterNameServiceImpl implements ChapterNameService {
     }
 
     @Override
+    public boolean chapterNameExists(String chapterName) {
+        return chapterNameRepository.findByChapterName(chapterName).isPresent();
+    }
+
+    @Override
     public List<ChapterNameEntity> findByUnitName(UnitNameEntity unitNameEntity) {
        return chapterNameRepository.findByUnitName(unitNameEntity);
     }
 
     @Override
     public ChapterNameEntity findByChapterName(String chapterName) {
-        return chapterNameRepository.findByChapterName(chapterName);
+        return chapterNameRepository.findByChapterName(chapterName).orElseThrow(
+                () -> new IllegalStateException("Няма тема с такова име."));
     }
 
 

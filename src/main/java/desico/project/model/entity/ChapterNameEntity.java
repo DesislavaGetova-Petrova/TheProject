@@ -21,7 +21,7 @@ public class ChapterNameEntity extends BaseEntity {
         this.unitName = unitName;
         return this;
     }
-    @Column(name="chapter_name")
+    @Column(name="chapter_name", nullable = false,unique = true)
     public String getChapterName() {
         return chapterName;
     }

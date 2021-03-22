@@ -4,6 +4,7 @@ import desico.project.model.entity.ChapterNameEntity;
 import desico.project.model.entity.VideoEntity;
 import desico.project.model.service.VideoServiceModel;
 import desico.project.model.service.VideoServiceModelCloud;
+import desico.project.model.view.VideoViewModel;
 import desico.project.repository.VideoRepository;
 import desico.project.service.ChapterNameService;
 import desico.project.service.CloudinaryService;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VideoServiceImpl implements VideoService {
@@ -56,22 +58,47 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
+    public boolean videoNameExists(String videoName) {
+        return videoRepository.findByVideoName(videoName).isPresent();
+    }
+
+    @Override
     public List<VideoEntity> findbyChapterName(ChapterNameEntity chapterNameEntity) {
         return videoRepository.findByChapterName(chapterNameEntity);
     }
 
     @Override
     public VideoEntity findByVideoName(String videoName) {
-        return videoRepository.findByVideoName(videoName);
+        return videoRepository.findByVideoName(videoName).orElseThrow(
+                () -> new IllegalStateException("Няма видео-решение с такова име."));
     }
+
 
     @Override
-    public void addRating(VideoServiceModel videoServiceModel) {
-        VideoEntity videoEntity=this.modelMapper.map(videoServiceModel,VideoEntity.class);
-
-
-        this.videoRepository.saveAndFlush(videoEntity);
-
+    public VideoViewModel findById(String id){
+        return videoRepository
+                .findById(id)
+                .map(videoEntity -> {
+                    VideoViewModel videoViewModel = modelMapper
+                            .map(videoEntity, VideoViewModel.class);
+                    videoViewModel.setChapterName(videoEntity.getChapterName().getChapterName());
+                    return videoViewModel;
+                })
+                .orElseThrow(IllegalArgumentException::new);
     }
+    @Override
+    public VideoEntity findEntityById(String videoId) {
+        return videoRepository
+                .findById(videoId)
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+
+    @Override
+    public List<VideoEntity> findAll() {
+        return videoRepository.findAll();
+    }
+
+
 
 }

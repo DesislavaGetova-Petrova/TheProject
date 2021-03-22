@@ -1,6 +1,7 @@
 package desico.project.web;
 
 import desico.project.model.binding.ChapterNameAddBindingModel;
+import desico.project.model.binding.UnitNameAddBindingModel;
 import desico.project.model.service.ChapterNameServiceModel;
 import desico.project.service.ChapterNameService;
 import desico.project.service.UnitNameService;
@@ -26,24 +27,28 @@ public class ChapterNameController {
         this.unitNameService = unitNameService;
     }
 
-
-
     @GetMapping("/add")
     public String add(Model model) {
         if(!model.containsAttribute("chapterNameAddBindingModel")){
             model.addAttribute("chapterNameAddBindingModel",new ChapterNameAddBindingModel());
+            model.addAttribute("chapterExistsError", false);
         }
         model.addAttribute("unitNames",unitNameService.findAllUnitNames());
         return "chapter-add";
     }
     @PostMapping("/add")
-    public String addConfirm(@Valid @ModelAttribute("chapterNameAddBindingModel") ChapterNameAddBindingModel chapterNameAddBindingModel,
+    public String addConfirm(@Valid ChapterNameAddBindingModel chapterNameAddBindingModel,
                              BindingResult bindingResult,
-                             RedirectAttributes redirectAttributes) {
+                             RedirectAttributes redirectAttributes)      {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("chapterNameAddBindingModel", chapterNameAddBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.chapterNameAddBindingModel",bindingResult);
+            return "redirect:add";
+        }
+        if (chapterNameService.chapterNameExists(chapterNameAddBindingModel.getChapterName())) {
+            redirectAttributes.addFlashAttribute("chapterNameAddBindingModel", chapterNameAddBindingModel);
+            redirectAttributes.addFlashAttribute("chapterExistsError",true );
             return "redirect:add";
         }
         this.chapterNameService.add(this.modelMapper.map(chapterNameAddBindingModel, ChapterNameServiceModel.class));

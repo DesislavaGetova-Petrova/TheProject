@@ -142,4 +142,11 @@ public class UserServiceImpl implements UserService {
         userEntity.setRoles(newUserRolls);
         userRepository.save(userEntity);
     }
+
+    @Override
+    public UserEntity findByName(String username) {
+        return userRepository
+                .findByUsername(username)
+                .orElseThrow(IllegalArgumentException::new);
+    }
 }

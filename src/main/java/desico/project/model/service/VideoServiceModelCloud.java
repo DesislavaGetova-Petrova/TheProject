@@ -9,6 +9,7 @@ public class VideoServiceModelCloud {
     private String chapterName;
     private String videoName;
     private MultipartFile videoUrl;
+    private String description;
 
 
 
@@ -43,5 +44,12 @@ public class VideoServiceModelCloud {
         return this;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public VideoServiceModelCloud setDescription(String description) {
+        this.description = description;
+        return this;
+    }
 }

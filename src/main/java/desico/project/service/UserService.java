@@ -1,5 +1,6 @@
 package desico.project.service;
 
+import desico.project.model.entity.UserEntity;
 import desico.project.model.enums.UserRole;
 import desico.project.model.service.UserRegistrationServiceModel;
 
@@ -17,5 +18,6 @@ public interface UserService {
 
     void changeRole(String username, String role);
     void deleteRole(String username, String role);
+    UserEntity findByName(String username);
 
 }

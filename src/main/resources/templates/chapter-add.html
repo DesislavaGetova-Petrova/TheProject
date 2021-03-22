@@ -30,16 +30,17 @@
                                     <label for="chapterName" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Наименование
                                     </label>
                                     <input th:field ="*{chapterName}" id="chapterName" name ="chapterName" type="text"
-                                            class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"/>
+                                            class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" required minlength="3" maxlength="200"/>
+
                                     <div>
                                         <small th:if="${#fields.hasErrors('chapterName')}" th:errors="*{chapterName}" id="chapterNameError"
                                                class="text-danger">Наименованието трябва да съдържа повече от три символа!</small>
                                     </div>
-
                                 </div>
-
-
-
+                                <div>
+                                    <small th:if="${chapterExistsError}"
+                                           class="text-danger">Тема с такова име вече съществува!</small>
+                                </div>
 
                                 <div class="input-group mb-3">
                                     <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">

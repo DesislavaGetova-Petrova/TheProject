@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<th:block th:include="~{fragments/head}"></th:block>
+<body id="page-top">
+
+<th:block th:include="~{fragments/nav}"></th:block>
+<main class="p-5 align-content-center bg-blur my-register-div">
+    <section class="page-section bg-light" id="video-view">
+        <div class="container">
+
+    <div  th:object="${video}">
+        <div class="row">
+            <h3 th:text="*{videoName}"></h3>
+            <div class="embed-responsive embed-responsive-16by9">
+                <video width="320" height="240" controls controlsList="nodownload">
+                    <source th:src="*{videoUrl}" type="video/mp4">
+                </video>
+            </div>
+            <div class="container">
+                <textarea name="text" class="form-control ml-1 shadow-none textarea" th:text="*{description}"></textarea>
+<!--            <h6 th:text="*{description}"></h6>-->
+            </div>
+        </div>
+    </div>
+        </div>
+
+    <div class="row rounded mb-5 mt-3">
+
+        <div class="container mt-5">
+            <div class="d-flex justify-content-center row ">
+                <div class="col-md-8">
+                    <h6>Ще се радваме да споделите Вашето мнение за изгледаното видео-решение</h6>
+
+                    <div class="d-flex flex-column comment-section ">
+                        <div class="bg-blur text-light p-2 rounded">
+                            <div class="d-flex flex-row user-info">
+
+                                <div class="d-flex flex-column justify-content-start ml-2">
+                                    <span class="d-block font-weight-bold name"></span>
+                                    <span> Comment added on date and time </span></div>
+                            </div>
+                            <div class="mt-2">
+
+                                <p class="comment-text">Comment text</p>
+                            </div>
+                        </div>
+                        <div class="bg-blur text-light rounded ">
+                            <div class="d-flex flex-row fs-12 float-right">
+                                <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span
+                                        class="ml-1">Like</span></div>
+                                <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span>
+                                </div>
+                                <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blur text-light p-2 rounded">
+                            <form action="/comments/add" method="POST">
+                                <div class="d-flex flex-row align-items-start">
+                                    <textarea name="text" class="form-control ml-1 shadow-none textarea"></textarea>
+                                </div>
+                                <input type="hidden" name="albumId" >
+                                <div class="mt-2 text-right">
+                                    <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+</main>
+<th:block th:include="~{fragments/fot}"></th:block>
+</body>
+</html>

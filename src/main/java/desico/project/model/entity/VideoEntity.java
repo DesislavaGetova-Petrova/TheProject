@@ -10,7 +10,9 @@ public class VideoEntity extends BaseEntity{
     private ChapterNameEntity chapterName;
     private String videoName;
     private String videoUrl;
-    private Float stars;
+    private String description;
+
+
 
     public VideoEntity() {
 
@@ -43,13 +45,14 @@ public class VideoEntity extends BaseEntity{
         this.videoUrl = video;
         return this;
     }
-    @Column
-    public Float getStars() {
-        return stars;
+    @Column(columnDefinition = "TEXT")
+    public String getDescription() {
+        return description;
     }
 
-    public VideoEntity setStars(Float stars) {
-        this.stars = stars;
+    public VideoEntity setDescription(String description) {
+        this.description = description;
         return this;
     }
+
 }

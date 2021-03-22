@@ -16,7 +16,7 @@ public interface ChapterNameRepository extends JpaRepository<ChapterNameEntity,S
     List<String> findAllChapterNames();
 
    List<ChapterNameEntity>findByUnitName(UnitNameEntity unitNameEntity);
-    ChapterNameEntity findByChapterName(String chapterName);
+   Optional<ChapterNameEntity> findByChapterName(String chapterName);
 
 
 

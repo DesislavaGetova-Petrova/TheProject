@@ -42,7 +42,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 // the name of the user password input field in OUR login form is password (optional)
                         passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
                 // on login success redirect here
-                        defaultSuccessUrl("/unit/view").
+                        defaultSuccessUrl("/video/viewAll").
                 // on login failure redirect here
                         failureForwardUrl("/users/login-error").
         and().

@@ -3,7 +3,29 @@
 <th:block th:include="~{fragments/head}"></th:block>
 
   <body >
-  <th:block th:include="~{fragments/nav}"></th:block>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="nav-link" href="/">
+        <img src="/img/logo.png" width="200px"  >
+      </a>
+      <div class="collapse navbar-collapse  d-flex justify-content-end">
+        <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+          <i class="fas fa-bars ml-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger"
+                 th:href="@{/users/register}"> регистрирай се
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
 
   <main class="p-5 align-content-center bg-blur my-register-div">
         <section class="page-section" id="login">
@@ -21,9 +43,9 @@
                 <h1 class="h3 mb-3 fw-normal">Mоля въведете </h1>
 
                 <label for="inputUsername" class="visually-hidden">Username</label>
-                <input type="text"   name="username" th:value="${username}" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                <input type="text"   name="username" th:value="${username}"   required minlength="3" maxlength="20"   id="inputUsername" class="form-control" placeholder="Username" >
                 <label for="inputPassword" class="visually-hidden">Password</label>
-                <input type="password"   name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password"   name="password" id="inputPassword"  required minlength="5" maxlength="20" class="form-control" placeholder="Password" >
                 <p>
 
                 </p>
@@ -37,12 +59,7 @@
     <th:block th:include="~{fragments/fot}"></th:block>
 
   </main>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Third party plugin JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-  <!-- Core theme JS-->
-  <script src="js/scripts.js"></script>
   </body>
 </html>

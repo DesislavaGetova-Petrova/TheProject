@@ -6,9 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface VideoRepository extends JpaRepository<VideoEntity,String> {
 List<VideoEntity> findByChapterName(ChapterNameEntity chapterNameEntity);
-VideoEntity findByVideoName(String videoName);
+Optional<VideoEntity>findByVideoName(String videoName);
+    List<VideoEntity> findAll();
 }

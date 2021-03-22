@@ -30,6 +30,7 @@ public class UnitNameController {
     public String add(Model model) {
         if(!model.containsAttribute("unitNameAddBindingModel")){
             model.addAttribute("unitNameAddBindingModel",new UnitNameAddBindingModel());
+            model.addAttribute("unitExistsError",false);
         }
         return "unit-add";}
 
@@ -45,6 +46,11 @@ public class UnitNameController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.unitNameAddBindingModel",bindingResult);
             return "redirect:add";
 
+        }
+        if (unitNameService.unitNameExists(unitNameAddBindingModel.getUnitName())) {
+            redirectAttributes.addFlashAttribute("unitNameAddBindingModel", unitNameAddBindingModel);
+            redirectAttributes.addFlashAttribute("unitExistsError", true);
+            return "redirect:add";
         }
         else{
             unitNameService.addUnit(modelMapper.map(unitNameAddBindingModel, UnitNameServiceModel.class));

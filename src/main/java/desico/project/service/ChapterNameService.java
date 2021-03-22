@@ -13,6 +13,7 @@ public interface ChapterNameService {
     List<String> findAllChapterNames();
 
     void add(ChapterNameServiceModel chapterNameServiceModel);
+    boolean chapterNameExists(String chapterName);
     List<ChapterNameEntity> findByUnitName(UnitNameEntity unitNameEntity);
     ChapterNameEntity findByChapterName(String chapterName);
 

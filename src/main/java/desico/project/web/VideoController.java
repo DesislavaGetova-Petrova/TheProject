@@ -3,6 +3,7 @@ package desico.project.web;
 import desico.project.model.binding.VideoAddBindingModel;
 import desico.project.model.service.VideoServiceModel;
 import desico.project.model.service.VideoServiceModelCloud;
+import desico.project.model.view.VideoViewModel;
 import desico.project.service.ChapterNameService;
 import desico.project.service.VideoService;
 import org.modelmapper.ModelMapper;
@@ -35,30 +36,31 @@ private final ChapterNameService chapterNameService;
     public String addLimited(Model model){
         if(!model.containsAttribute("videoServiceModel")){
             model.addAttribute("videoServiceModel",new VideoServiceModelCloud());
+            model.addAttribute("videoExistsError", false);
         }
 
         model.addAttribute("chapterNames",chapterNameService.findAllChapterNames());
         return "video-add-limited";
     }
     @PostMapping("/addLimited")
-    public String addConfirm(Model model, @ModelAttribute("videoServiceModel") VideoServiceModelCloud videoServiceModel
-
-                            ) throws IOException {
-
-//        if (bindingResult.hasErrors()) {
-//            redirectAttributes.addFlashAttribute("videoServiceModel", videoServiceModel);
-//            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.videoServiceModel",bindingResult);
-//            return "redirect:add";
-//        }
+    public String addConfirm( @ModelAttribute("videoServiceModel") VideoServiceModelCloud videoServiceModel, RedirectAttributes redirectAttributes) throws IOException {
+        if (videoService.videoNameExists(videoServiceModel.getVideoName())) {
+            redirectAttributes.addFlashAttribute("videoExistsError", true);
+            return "redirect:addLimited";
+        }
         this.videoService.addVideo(videoServiceModel);
-
         return  "redirect:/";
     }
     @GetMapping("/viewAll/{chapterName}")
     public String viewAll(@PathVariable String chapterName, Model model) {
         model.addAttribute("chapterName", chapterName);
         model.addAttribute("videoEntity",videoService.findbyChapterName(chapterNameService.findByChapterName(chapterName)));
-        return "all-video-view";
+        return "chapter-video-view";
+    }
+    @GetMapping("/viewAll")
+    public String viewAll( Model model) {
+        model.addAttribute("videoEntity",videoService.findAll());
+        return "video-view-all";
     }
 
 
@@ -68,6 +70,7 @@ private final ChapterNameService chapterNameService;
     public String add(Model model){
         if(!model.containsAttribute("videoAddBindingModel")){
             model.addAttribute("videoAddBindingModel",new VideoAddBindingModel());
+            model.addAttribute("videoExistsError", false);
         }
         model.addAttribute("chapterNames",chapterNameService.findAllChapterNames());
         return "video-add";
@@ -82,24 +85,31 @@ private final ChapterNameService chapterNameService;
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.videoAddBindingModel",bindingResult);
             return "redirect:add";
         }
+        if (videoService.videoNameExists(videoAddBindingModel.getVideoName())) {
+            redirectAttributes.addFlashAttribute("videoAddBindingModel", videoAddBindingModel);
+            redirectAttributes.addFlashAttribute("videoExistsError", true);
+            return "redirect:add";
+        }
         this.videoService.add(this.modelMapper.map(videoAddBindingModel, VideoServiceModel.class));
         return  "redirect:/";
     }
 
 
 
-    @GetMapping("/view/{videoName}")
-    public String view(@PathVariable String videoName,Model model){
-        model.addAttribute("video", this.videoService.findByVideoName(videoName));
-        return  "video-view";
+    @GetMapping("/view/{id}")
+    public String viewById(@PathVariable String id,Model model){
+        VideoViewModel videoViewModel = videoService.findById(id);
+        model.addAttribute("video", videoViewModel);
+        return "video-details";
+    }
+    @GetMapping("/test")
+    public String test( ) {
+        return "video";
     }
 
-    @PostMapping("/addRating/{videoName}")
-    public String save(@PathVariable String videoName,Model model) {
-        model.addAttribute("video", this.videoService.findByVideoName(videoName));
 
-        return "redirect:/unit/view";
-    }
+
+
 
 
 }

@@ -43,7 +43,7 @@ public class CarouselServiceImpl implements CarouselService {
 
     @Override
     public String thirdImage() {
-        return images.get(3);
+        return images.get(2);
     }
 
     @Scheduled(cron = "${carousel.refresh-cron}")

@@ -20,7 +20,7 @@ public class UserRegistrationBindingModel {
     public UserRegistrationBindingModel() {
     }
     @NotEmpty
-    @Size(min = 3)
+    @Size(min = 3, max = 20)
     public String getUsername() {
         return username;
     }

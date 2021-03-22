@@ -8,8 +8,10 @@ import java.util.Optional;
 
 public interface UnitNameService {
     void addUnit(UnitNameServiceModel unitNameServiceModel);
- UnitNameEntity findByUnitName(String unitName);
- List<UnitNameEntity> findAll();
+    boolean unitNameExists(String unitName);
+    void seedUnitNames();
+    UnitNameEntity findByUnitName(String unitName);
+    List<UnitNameEntity> findAll();
 
 
 
