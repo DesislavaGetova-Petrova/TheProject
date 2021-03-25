@@ -38,7 +38,7 @@ const displayVideos = (videos) => {
                                 </div>
                  <div class="card-body">
                                     <h4 class="card-title">${a.videoName}</h4>                                 
-                                    <p class="card-text" "${a.description}"></p>
+                                    <p class="card-text" >${a.description}</p>
                  </div>
                    
                     <div class="d-flex justify-content-between align-items-center">

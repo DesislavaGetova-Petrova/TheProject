@@ -17,16 +17,16 @@ public class LogAspect {
         this.logService = logService;
     }
 
-    @Pointcut("execution(* desico.project.web.VideoController.viewById(..))")
+    @Pointcut("execution(* desico.project.web.HomeController.info(..))")
     public void detailsPointcut(){};
 
     @After("detailsPointcut()")
     public void afterAdvice(JoinPoint joinPoint){
 
         Object[] args = joinPoint.getArgs();
-        String videoId = (String) args[0];
+
         String action = joinPoint.getSignature().getName();
 
-        logService.createLog(action,videoId);
+        logService.createLog(action);
     }
 }

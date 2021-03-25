@@ -24,4 +24,6 @@ public interface VideoService {
 
     List<VideoEntity> findAll();
 
+    void deleteVideo(String id);
+
 }

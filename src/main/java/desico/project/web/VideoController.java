@@ -7,6 +7,7 @@ import desico.project.model.view.VideoViewModel;
 import desico.project.service.ChapterNameService;
 import desico.project.service.VideoService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -43,7 +44,13 @@ private final ChapterNameService chapterNameService;
         return "video-add-limited";
     }
     @PostMapping("/addLimited")
-    public String addConfirm( @ModelAttribute("videoServiceModel") VideoServiceModelCloud videoServiceModel, RedirectAttributes redirectAttributes) throws IOException {
+    public String addConfirm( @ModelAttribute("videoServiceModel") VideoServiceModelCloud videoServiceModel, BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes) throws IOException {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("videoServiceModel", videoServiceModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.videoServiceModel",bindingResult);
+            return "redirect:addLimited";
+        }
         if (videoService.videoNameExists(videoServiceModel.getVideoName())) {
             redirectAttributes.addFlashAttribute("videoExistsError", true);
             return "redirect:addLimited";
@@ -108,6 +115,11 @@ private final ChapterNameService chapterNameService;
     }
 
 
+    @GetMapping("/delete/{id}")
+    public String deleteVideo(@PathVariable String id,Model model) {
+        this.videoService.deleteVideo(id);
+        return "video-view-all";
+    }
 
 
 

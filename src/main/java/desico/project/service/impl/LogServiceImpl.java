@@ -9,11 +9,13 @@ import desico.project.service.LogService;
 import desico.project.service.UserService;
 import desico.project.service.VideoService;
 import org.modelmapper.ModelMapper;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,22 +23,19 @@ import java.util.stream.Collectors;
 public class LogServiceImpl implements LogService {
 
     private final LogRepository logRepository;
-    private final VideoService videoService;
     private final UserService userService;
     private final ModelMapper modelMapper;
 
-    public LogServiceImpl(LogRepository logRepository, VideoService videoService, UserService userService, ModelMapper modelMapper) {
+    public LogServiceImpl(LogRepository logRepository, UserService userService, ModelMapper modelMapper) {
         this.logRepository = logRepository;
-        this.videoService = videoService;
         this.userService = userService;
         this.modelMapper = modelMapper;
     }
 
 
     @Override
-    public void createLog(String action, String videoId) {
-        VideoEntity videoEntity = videoService
-                .findEntityById(videoId);
+    public void createLog(String action) {
+
 
         Authentication authentication = SecurityContextHolder
                 .getContext()
@@ -46,7 +45,6 @@ public class LogServiceImpl implements LogService {
         UserEntity userEntity = userService.findByName(username);
 
         LogEntity logEntity = new LogEntity()
-                .setVideoEntity(videoEntity)
                 .setUserEntity(userEntity)
                 .setAction(action)
                 .setDateTime(LocalDateTime.now());
@@ -54,6 +52,14 @@ public class LogServiceImpl implements LogService {
         logRepository.save(logEntity);
 
     }
+
+
+    @Scheduled(cron = "${log.delete-cron}")
+    public void deleteLog() {
+        logRepository.deleteAll();
+    }
+
+
 
     @Override
     public List<LogServiceModel> findAllLogs() {
@@ -63,8 +69,7 @@ public class LogServiceImpl implements LogService {
                 .map(logEntity -> {
                     LogServiceModel logServiceModel = modelMapper
                             .map(logEntity, LogServiceModel.class);
-                    logServiceModel.setVideoName(logEntity.getVideoEntity().getVideoName())
-                            .setUser(logEntity.getUserEntity().getUsername());
+                    logServiceModel.setUser(logEntity.getUserEntity().getUsername());
 
                     return logServiceModel;
                 })

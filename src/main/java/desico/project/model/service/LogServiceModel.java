@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class LogServiceModel {
     private String id;
     private String user;
-    private String videoName;
+//    private String videoName;
     private String action;
     private LocalDateTime dateTime;
 
@@ -51,12 +51,12 @@ public class LogServiceModel {
         return this;
     }
 
-    public String getVideoName() {
-        return videoName;
-    }
-
-    public LogServiceModel setVideoName(String videoName) {
-        this.videoName = videoName;
-        return this;
-    }
+//    public String getVideoName() {
+//        return videoName;
+//    }
+//
+//    public LogServiceModel setVideoName(String videoName) {
+//        this.videoName = videoName;
+//        return this;
+//    }
 }

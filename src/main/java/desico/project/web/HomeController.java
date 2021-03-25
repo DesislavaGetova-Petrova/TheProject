@@ -25,7 +25,6 @@ public class HomeController {
         model.addAttribute("firstImg", carouselService.firstImage());
         model.addAttribute("secondImg", carouselService.secondImage());
         model.addAttribute("thirdImg", carouselService.thirdImage());
-
         return "info";
     }
     @GetMapping("/offer")

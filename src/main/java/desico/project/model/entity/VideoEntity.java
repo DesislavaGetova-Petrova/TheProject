@@ -1,5 +1,7 @@
 package desico.project.model.entity;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,7 @@ public class VideoEntity extends BaseEntity{
     private String videoName;
     private String videoUrl;
     private String description;
+
 
 
 
@@ -54,5 +57,6 @@ public class VideoEntity extends BaseEntity{
         this.description = description;
         return this;
     }
+
 
 }

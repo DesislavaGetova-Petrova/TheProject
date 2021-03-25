@@ -43,7 +43,7 @@
                                 <input type="file" class="form-control-file" id="upload-video" name="videoUrl"  required="required"/>
                             </div>
                             <div>
-                                <small th:if="${!videoExistsError}"
+                                <small th:if="${videoExistsError}"
                                     class="text-danger">Видео-решение с такова наименование вече съществува!</small>
                             </div>
                             <div class="input-group mb-3">

@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -99,6 +100,14 @@ public class VideoServiceImpl implements VideoService {
         return videoRepository.findAll();
     }
 
+    @Override
+
+    public void deleteVideo(String id) {
+        VideoEntity targetVideo = this.videoRepository.findById(id).orElse(null);
+
+        this.videoRepository.delete(targetVideo);
+
+    }
 
 
 }

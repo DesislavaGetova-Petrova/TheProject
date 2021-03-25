@@ -1,9 +1,8 @@
 package desico.project.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,7 +11,7 @@ public class LogEntity extends BaseEntity{
 
 
     private UserEntity userEntity;
-    private VideoEntity videoEntity;
+//    private VideoEntity videoEntity;
     private String action;
     private LocalDateTime dateTime;
 
@@ -27,15 +26,16 @@ public class LogEntity extends BaseEntity{
         this.userEntity = userEntity;
         return this;
     }
-    @ManyToOne
-    public VideoEntity getVideoEntity() {
-        return videoEntity;
-    }
-
-    public LogEntity setVideoEntity(VideoEntity videoEntity) {
-        this.videoEntity = videoEntity;
-        return this;
-    }
+//    @ManyToOne
+//
+//    public VideoEntity getVideoEntity() {
+//        return videoEntity;
+//    }
+//
+//    public LogEntity setVideoEntity(VideoEntity videoEntity) {
+//        this.videoEntity = videoEntity;
+//        return this;
+//    }
     @Column(name = "action", nullable = false)
     public String getAction() {
         return action;
