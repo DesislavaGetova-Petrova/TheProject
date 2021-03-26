@@ -1,6 +1,7 @@
 package desico.project.web;
 
 import desico.project.service.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ public class RoleController {
 
         return "role-add";
     }
+
     @PostMapping("/add")
     public String addCofirm(@RequestParam String username,
                             @RequestParam String role, Model model){

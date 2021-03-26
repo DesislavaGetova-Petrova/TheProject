@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 
 <th:block th:include="~{fragments/head}"></th:block>
 <body id="page-top">
@@ -19,18 +19,25 @@
             </div>
             <div class="container">
                 <textarea name="text" class="form-control ml-1 shadow-none textarea" th:text="*{description}"></textarea>
-<!--            <h6 th:text="*{description}"></h6>-->
+            </div>
+            <div  sec:authorize="hasRole('ROLE_ADMIN')" class="text-center">
+
+
+                <h6 class="large text-muted">Желаете ли да изтриете цялата информация по това видео-решение?</h6>
+                <p></p>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"th:href="@{/video/delete/{id}(id =*{id})}">Изтрий </a>
+
             </div>
         </div>
     </div>
         </div>
 
-    <div class="row rounded mb-5 mt-3">
+    <div  class="row rounded mb-5 mt-3">
 
         <div class="container mt-5">
             <div class="d-flex justify-content-center row ">
                 <div class="col-md-8">
-                    <h6>Ще се радваме да споделите Вашето мнение за изгледаното видео-решение</h6>
+                    <h6>Ще се радваме да споделите Вашето мнение за изгледаното видео-решение ;)</h6>
 
                     <div class="d-flex flex-column comment-section ">
                         <div class="bg-blur text-light p-2 rounded">

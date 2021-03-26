@@ -44,8 +44,9 @@ const displayVideos = (videos) => {
                     <div class="d-flex justify-content-between align-items-center">
 
                         <div class="btn-group">
-                            <a href="/video/view/${a.id}"  type="button" class="btn btn-sm btn-outline-secondary">Details</a>
+                            <a href="/video/view/${a.id}"  type="button" class="btn btn-sm btn-outline-secondary">Детайли</a>
                         </div>
+                                         
                       
                     </div>
                 

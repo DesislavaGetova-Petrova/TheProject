@@ -17,7 +17,7 @@ public class LogAspect {
         this.logService = logService;
     }
 
-    @Pointcut("execution(* desico.project.web.HomeController.info(..))")
+    @Pointcut("execution(* desico.project.web.VideoController.viewAll(..))")
     public void detailsPointcut(){};
 
     @After("detailsPointcut()")

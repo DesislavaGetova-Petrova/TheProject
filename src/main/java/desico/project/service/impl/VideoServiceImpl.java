@@ -53,7 +53,8 @@ public class VideoServiceImpl implements VideoService {
         VideoEntity videoEntity=new VideoEntity()
                 .setVideoName(videoServiceModel.getVideoName())
                 .setChapterName(this.chapterNameService.findByChapterName(videoServiceModel.getChapterName()))
-                .setVideoUrl(videoUrlNew);
+                .setVideoUrl(videoUrlNew)
+                .setDescription(videoServiceModel.getDescription());
         videoRepository.saveAndFlush(videoEntity);
 
     }

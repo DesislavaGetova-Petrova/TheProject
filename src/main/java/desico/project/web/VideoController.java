@@ -109,14 +109,14 @@ private final ChapterNameService chapterNameService;
         model.addAttribute("video", videoViewModel);
         return "video-details";
     }
-    @GetMapping("/test")
-    public String test( ) {
-        return "video";
-    }
+
 
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteVideo(@PathVariable String id,Model model) {
+        VideoViewModel videoViewModel = videoService.findById(id);
+        model.addAttribute("video", videoViewModel);
         this.videoService.deleteVideo(id);
         return "video-view-all";
     }
