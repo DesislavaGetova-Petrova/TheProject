@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -27,11 +26,11 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final PasswordEncoder encoder;
     private final ModelMapper modelMapper;
-    private final ProjectUserService projectUserService;
+    private final desico.project.service.impl.ProjectUserService projectUserService;
 
     public UserServiceImpl(UserRoleRepository userRoleRepository,
                            UserRepository userRepository,
-                           PasswordEncoder passwordEncoder, PasswordEncoder encoder, ModelMapper modelMapper, ProjectUserService projectUserService) {
+                           PasswordEncoder passwordEncoder, PasswordEncoder encoder, ModelMapper modelMapper, desico.project.service.impl.ProjectUserService projectUserService) {
         this.userRoleRepository = userRoleRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;

@@ -2,12 +2,10 @@ package desico.project.service.impl;
 
 import desico.project.model.entity.LogEntity;
 import desico.project.model.entity.UserEntity;
-import desico.project.model.entity.VideoEntity;
 import desico.project.model.service.LogServiceModel;
 import desico.project.repository.LogRepository;
 import desico.project.service.LogService;
 import desico.project.service.UserService;
-import desico.project.service.VideoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.Authentication;
@@ -15,7 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
