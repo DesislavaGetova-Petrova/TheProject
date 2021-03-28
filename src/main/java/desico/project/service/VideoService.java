@@ -23,6 +23,8 @@ public interface VideoService {
     VideoEntity findEntityById(String videoId);
 
     List<VideoEntity> findAll();
+    List<VideoViewModel> findAllVideos();
+
 
     void deleteVideo(String id);
 

@@ -2,6 +2,7 @@ package desico.project.service.impl;
 
 import desico.project.model.entity.ChapterNameEntity;
 import desico.project.model.entity.VideoEntity;
+import desico.project.model.service.LogServiceModel;
 import desico.project.model.service.VideoServiceModel;
 import desico.project.model.service.VideoServiceModelCloud;
 import desico.project.model.view.VideoViewModel;
@@ -17,6 +18,7 @@ import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class VideoServiceImpl implements VideoService {
@@ -99,6 +101,19 @@ public class VideoServiceImpl implements VideoService {
     @Override
     public List<VideoEntity> findAll() {
         return videoRepository.findAll();
+    }
+
+
+    @Override
+    public List<VideoViewModel> findAllVideos() {
+        return videoRepository.findAll().stream()
+                .map(videoEntity -> {
+                    VideoViewModel videoViewModel=modelMapper
+                            .map(videoEntity,VideoViewModel.class);
+                    videoViewModel.setChapterName(videoEntity.getChapterName().getChapterName());
+                    return videoViewModel;
+                })
+                .collect(Collectors.toList());
     }
 
     @Override
