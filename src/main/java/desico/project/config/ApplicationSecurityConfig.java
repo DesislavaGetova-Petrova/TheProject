@@ -29,9 +29,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                         antMatchers("/","/info","/offer","/users/login", "/users/register").permitAll().
-                        antMatchers("/roles/delete","/unit/add", "/roles/add","/chapter/add","/video/add","/video/addLimited","/video/delete").hasRole("ADMIN").
-                        antMatchers("/statistics").hasRole("VIPUSER").
-                        antMatchers("/video/view", "/unit/view","/chapter/view","/video/viewAll").authenticated().
+                        antMatchers("/roles/delete","/unit/add", "/roles/add","/chapter/add","/video/add","/video/addLimited","/video/delete","/statistics","/comments").hasRole("ADMIN").
+                        antMatchers("/video/view", "/unit/view","/chapter/view","/video/viewAll","/video/comment").authenticated().
                 and().
 
                         formLogin().

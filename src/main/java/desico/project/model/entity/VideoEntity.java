@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="videos")
@@ -13,8 +14,7 @@ public class VideoEntity extends BaseEntity{
     private String videoName;
     private String videoUrl;
     private String description;
-
-
+    private Set<CommentEntity> comments;
 
 
     public VideoEntity() {
@@ -57,6 +57,13 @@ public class VideoEntity extends BaseEntity{
         this.description = description;
         return this;
     }
+    @OneToMany(mappedBy = "videoEntity", fetch = FetchType.EAGER,cascade= {CascadeType.ALL})
+    public Set<CommentEntity> getComments() {
+        return comments;
+    }
 
-
+    public VideoEntity setComments(Set<CommentEntity> comments) {
+        this.comments = comments;
+        return this;
+    }
 }

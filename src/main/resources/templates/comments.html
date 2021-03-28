@@ -13,23 +13,23 @@
                 <div class="bg-white tm-block">
                     <div class="row">
 
-            <h2 class="text-light">Users actions</h2>
+            <h2 class="text-light">Users comments</h2>
             <div class="table-responsive text-light">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Date and Time</th>
-                        <th>Action</th>
+                        <th>Video</th>
                         <th>Username</th>
+                        <th>Comment</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="l : ${logs}" th:object="${l}">
-                        <td th:text="*{id}"></td>
+                    <tr th:each="l : ${comments}" th:object="${l}">
                         <td th:text="*{dateTime}"></td>
-                        <td th:text="*{action}"></td>
-                        <td th:text="*{user}"></td>
+                        <td th:text="*{video}"></td>
+                        <td th:text="*{author}"></td>
+                        <td th:text="*{textContent}"></td>
                     </tr>
                     </tbody>
                 </table>

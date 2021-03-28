@@ -1,13 +1,15 @@
 package desico.project.web;
 
 import desico.project.model.binding.VideoAddBindingModel;
+import desico.project.model.entity.VideoEntity;
+import desico.project.model.service.CommentServiceModel;
 import desico.project.model.service.VideoServiceModel;
 import desico.project.model.service.VideoServiceModelCloud;
 import desico.project.model.view.VideoViewModel;
 import desico.project.service.ChapterNameService;
+import desico.project.service.CommentService;
 import desico.project.service.VideoService;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,13 +25,14 @@ public class VideoController {
 private final VideoService videoService;
 private final ModelMapper modelMapper;
 private final ChapterNameService chapterNameService;
+private  final CommentService commentService;
 
 
-    public VideoController(VideoService videoService, ModelMapper modelMapper, ChapterNameService chapterNameService) {
+    public VideoController(VideoService videoService, ModelMapper modelMapper, ChapterNameService chapterNameService, CommentService commentService) {
         this.videoService = videoService;
         this.modelMapper = modelMapper;
         this.chapterNameService = chapterNameService;
-
+        this.commentService = commentService;
     }
 
 
@@ -110,15 +113,29 @@ private final ChapterNameService chapterNameService;
         return "video-details";
     }
 
-
-
     @GetMapping("/delete/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public String deleteVideo(@PathVariable String id,Model model) {
         VideoViewModel videoViewModel = videoService.findById(id);
         model.addAttribute("video", videoViewModel);
         this.videoService.deleteVideo(id);
-        return "video-view-all";
+        return  "redirect:/";
+    }
+
+    @GetMapping("/comment/{id}")
+    public String commentVideo(@PathVariable String id,Model model) {
+        VideoEntity videoEntity = videoService.findEntityById(id);
+        model.addAttribute("videoEntity", videoEntity.getVideoName());
+        model.addAttribute("commentServiceModel",new CommentServiceModel());
+        return "comment-add";
+    }
+
+    @PostMapping("/comment")
+    public String commentCreate(@ModelAttribute("commentServiceModel") CommentServiceModel commentServiceModel ) {
+
+
+
+        this.commentService.createComment(commentServiceModel);
+        return  "redirect:/";
     }
 
 
