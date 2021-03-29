@@ -45,14 +45,13 @@ public class LogServiceImpl implements LogService {
                 .setUserEntity(userEntity)
                 .setAction(action)
                 .setDateTime(LocalDateTime.now());
-
         logRepository.save(logEntity);
 
     }
 
 
     @Scheduled(cron = "${log.delete-cron}")
-    public void deleteLog() {
+    public void deleteLogs() {
         logRepository.deleteAll();
     }
 

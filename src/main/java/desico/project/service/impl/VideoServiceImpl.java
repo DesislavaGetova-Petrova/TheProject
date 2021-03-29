@@ -40,8 +40,7 @@ public class VideoServiceImpl implements VideoService {
     @Override
     public void add(VideoServiceModel videoServiceModel) {
         VideoEntity videoEntity=this.modelMapper.map(videoServiceModel,VideoEntity.class);
-        videoEntity.setChapterName(this.chapterNameService.findByChapterName(videoServiceModel.getChapterName()));
-        this.videoRepository.saveAndFlush(videoEntity);
+        videoEntity.setChapterName(this.chapterNameService.findByChapterName(videoServiceModel.getChapterName()));       this.videoRepository.saveAndFlush(videoEntity);
 
     }
 
@@ -50,15 +49,12 @@ public class VideoServiceImpl implements VideoService {
     public void addVideo(VideoServiceModelCloud videoServiceModel) throws IOException {
         MultipartFile videoUrl=videoServiceModel.getVideoUrl();
         String videoUrlNew =cloudinaryService.uploadVideo(videoUrl);
-
-
         VideoEntity videoEntity=new VideoEntity()
                 .setVideoName(videoServiceModel.getVideoName())
                 .setChapterName(this.chapterNameService.findByChapterName(videoServiceModel.getChapterName()))
                 .setVideoUrl(videoUrlNew)
                 .setDescription(videoServiceModel.getDescription());
         videoRepository.saveAndFlush(videoEntity);
-
     }
 
     @Override
@@ -120,7 +116,6 @@ public class VideoServiceImpl implements VideoService {
 
     public void deleteVideo(String id) {
         VideoEntity targetVideo = this.videoRepository.findById(id).orElse(null);
-
         this.videoRepository.delete(targetVideo);
 
     }

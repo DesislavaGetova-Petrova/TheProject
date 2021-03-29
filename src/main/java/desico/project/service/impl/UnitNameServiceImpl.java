@@ -52,18 +52,14 @@ public class UnitNameServiceImpl implements UnitNameService {
     public void seedUnitNames() {
         if (unitNameRepository.count() == 0) {
             try {
-
                 UnitNameEntity[] unitNameEntities =
-
                         gson.fromJson(Files.readString(Path.of(unitNamesFile.getURI())), UnitNameEntity[].class);
-
                 Arrays.stream(unitNameEntities).
                         forEach(unitNameRepository::save);
             } catch (IOException e) {
                 throw new IllegalStateException("Имената на разделите не могат да се заредят... :(");
             }
         }
-
     }
 
     @Override

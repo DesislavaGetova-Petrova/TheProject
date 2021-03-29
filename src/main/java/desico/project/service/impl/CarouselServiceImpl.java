@@ -17,9 +17,7 @@ import org.springframework.stereotype.Service;
 public class CarouselServiceImpl implements CarouselService {
 
     private Logger LOGGER = LoggerFactory.getLogger(CarouselServiceImpl.class);
-
     private List<String> images = new ArrayList<>();
-
     public CarouselServiceImpl(@Value("${carousel.images}") List<String> images) {
         this.images.addAll(images);
     }

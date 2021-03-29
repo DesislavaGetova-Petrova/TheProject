@@ -20,11 +20,9 @@ public class ChapterNameServiceImpl implements ChapterNameService {
     private final ModelMapper modelMapper;
 
 
-    public ChapterNameServiceImpl(ChapterNameRepository chapterNameRepository, UnitNameRepository unitNameRepository, UnitNameService unitNameService, ModelMapper modelMapper) {
+    public ChapterNameServiceImpl(ChapterNameRepository chapterNameRepository, UnitNameService unitNameService, ModelMapper modelMapper) {
         this.chapterNameRepository = chapterNameRepository;
         this.unitNameService = unitNameService;
-
-
         this.modelMapper = modelMapper;
     }
 
@@ -38,8 +36,6 @@ public class ChapterNameServiceImpl implements ChapterNameService {
         ChapterNameEntity chapterNameEntity=this.modelMapper.map(chapterNameServiceModel,ChapterNameEntity.class);
         chapterNameEntity.setUnitName(this.unitNameService.findByUnitName(chapterNameServiceModel.getUnitName()));
         this.chapterNameRepository.saveAndFlush(chapterNameEntity);
-
-
     }
 
     @Override
