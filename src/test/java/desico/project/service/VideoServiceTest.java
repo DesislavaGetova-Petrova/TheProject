@@ -19,6 +19,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -117,6 +118,18 @@ public class VideoServiceTest {
         Mockito.when(mockVideoRepository.findByVideoName(video.getVideoName())).thenReturn(Optional.of(video));
         videoService.findByVideoName(video.getVideoName());
         Mockito.verify(mockVideoRepository).findByVideoName(video.getVideoName());
+    }
+    @Test
+    void findVideoEntityByVideoNameTest2() {
+        VideoEntity video= new VideoEntity();
+        video.setChapterName(new ChapterNameEntity(){{setChapterName("ChapterName");}});
+        video.setVideoName("video");
+        video.setVideoUrl("videoUrl");
+        Assertions.assertThrows(
+                IllegalStateException.class, () -> {
+                   videoService.findByVideoName("novideo");
+                }
+        );
     }
     @Test
     void findVideoViewModelByIdTest() {

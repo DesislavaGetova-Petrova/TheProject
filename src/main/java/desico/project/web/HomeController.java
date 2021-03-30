@@ -2,6 +2,9 @@ package desico.project.web;
 
 
 import desico.project.service.CarouselService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,7 @@ public class HomeController {
     public HomeController(CarouselService carouselService) {
         this.carouselService = carouselService;
     }
+    private Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
 
     @GetMapping("/")
     public String index() {
@@ -30,6 +34,12 @@ public class HomeController {
     @GetMapping("/offer")
     public String ourOffer() {
         return "offer";
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<String> test() {
+        LOGGER.info("LOG");
+        return ResponseEntity.ok().build();
     }
 
 
