@@ -13,6 +13,6 @@ import java.util.Optional;
 public interface VideoRepository extends JpaRepository<VideoEntity,String> {
 List<VideoEntity> findByChapterName(ChapterNameEntity chapterNameEntity);
 Optional<VideoEntity>findByVideoName(String videoName);
-    List<VideoEntity> findAll();
+List<VideoEntity> findAll();
 
 }

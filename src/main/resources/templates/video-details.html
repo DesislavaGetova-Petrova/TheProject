@@ -19,7 +19,7 @@
             <div class="container">
                 <textarea name="text" class="form-control ml-1 shadow-none textarea" th:text="*{description}"></textarea>
             </div>
-            <div  sec:authorize="hasRole('ROLE_ADMIN')" class="col-md-8">
+            <div  sec:authorize="hasRole('ROLE_MODERATOR')" class="col-md-8">
 
                 <h6 class="large text-muted">Желаете ли да изтриете цялата информация по това видео-решение?</h6>
                 <p></p>

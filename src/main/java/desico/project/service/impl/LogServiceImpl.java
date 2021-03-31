@@ -66,7 +66,6 @@ public class LogServiceImpl implements LogService {
                     LogServiceModel logServiceModel = modelMapper
                             .map(logEntity, LogServiceModel.class);
                     logServiceModel.setUser(logEntity.getUserEntity().getUsername());
-
                     return logServiceModel;
                 })
                 .collect(Collectors.toList());

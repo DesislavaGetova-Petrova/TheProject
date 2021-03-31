@@ -70,7 +70,7 @@ private  final CommentService commentService;
     @GetMapping("/viewAll")
     public String viewAll( Model model) {
         model.addAttribute("videoEntity",videoService.findAll());
-        return "video-view-all";
+        return "videos-view-all";
     }
 
 

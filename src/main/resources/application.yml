@@ -1,12 +1,12 @@
 carousel:
     images: info1.png, info2.png, info3.png, info1.png, info2.png, info3.png
-    refresh-cron: 0 */10 * * * *
+    refresh-cron: 0 */15 * * * *
 cloudinary:
     api-key: 512268179821855
     api-secret: ${CLOUDINARY_SECRET}
     cloud-name: doma6noto
 log:
-    delete-cron: '* */5 * * * *'
+    delete-cron: '* */15 * * * *'
 server:
     port: 8000
 spring:

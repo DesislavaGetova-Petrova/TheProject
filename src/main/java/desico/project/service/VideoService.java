@@ -14,17 +14,20 @@ public interface VideoService {
     void add(VideoServiceModel videoServiceModel);
 
     void addVideo(VideoServiceModelCloud videoServiceModel) throws IOException;
+
     boolean videoNameExists(String videoName);
 
     List<VideoEntity> findbyChapterName(ChapterNameEntity chapterNameEntity);
 
     VideoEntity findByVideoName(String videoName);
+
     VideoViewModel findById(String id);
+
     VideoEntity findEntityById(String videoId);
 
     List<VideoEntity> findAll();
-    List<VideoViewModel> findAllVideos();
 
+    List<VideoViewModel> findAllVideos();
 
     void deleteVideo(String id);
 

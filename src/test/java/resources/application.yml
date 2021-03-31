@@ -12,16 +12,19 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
 
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     open-in-view: false
 
     cloudinary:
       api-key: 512268179821855
       api-secret: ${CLOUDINARY_SECRET}
       cloud-name: doma6noto
+    carousel:
+       images: info1.png, info2.png, info3.png, info1.png, info2.png, info3.png
+       refresh-cron: 0 */15 * * * *
 
     log:
-      delete-cron: '* */5 * * * *'
+      delete-cron: '* */15 * * * *'
     server:
       port: 8000
 

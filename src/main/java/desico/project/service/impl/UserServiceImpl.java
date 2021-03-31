@@ -46,19 +46,19 @@ public class UserServiceImpl implements UserService {
         if (userRepository.count() == 0) {
 
             UserRoleEntity adminRole = new UserRoleEntity().setRole(UserRole.ADMIN);
-            UserRoleEntity vipUserRole = new UserRoleEntity().setRole(UserRole.VIPUSER);
+            UserRoleEntity moderatorRole = new UserRoleEntity().setRole(UserRole.MODERATOR);
             UserRoleEntity userRole = new UserRoleEntity().setRole(UserRole.USER);
 
-            userRoleRepository.saveAll(List.of(adminRole, vipUserRole, userRole));
+            userRoleRepository.saveAll(List.of(adminRole, moderatorRole, userRole));
 
             UserEntity admin = new UserEntity().setUsername("admin").setEmail("desy@abv.bg").setPassword(passwordEncoder.encode("123456"));
-            UserEntity vipUser = new UserEntity().setUsername("vipUser").setEmail("ddd@ddd").setPassword(passwordEncoder.encode("123456"));
+            UserEntity moderator = new UserEntity().setUsername("moderator").setEmail("ddd@ddd").setPassword(passwordEncoder.encode("123456"));
             UserEntity user = new UserEntity().setUsername("user").setEmail("pepi@abv.bg").setPassword(passwordEncoder.encode("123456"));
-            admin.setRoles(List.of(adminRole, vipUserRole, userRole));
+            admin.setRoles(List.of(adminRole, moderatorRole, userRole));
 
             user.setRoles(List.of(userRole));
-            vipUser.setRoles(List.of(userRole, vipUserRole));
-            userRepository.saveAll(List.of(admin, vipUser, user));
+            moderator.setRoles(List.of(userRole, moderatorRole));
+            userRepository.saveAll(List.of(admin, moderator, user));
         }
     }
 
@@ -130,7 +130,6 @@ public class UserServiceImpl implements UserService {
         if (hasRole) {
             for (UserRoleEntity userRoll : userRolls) {
                 if (!userRoll.getRole().equals(UserRole.valueOf(role))) {
-
                     newUserRolls.add(userRoll);
 
                 }
