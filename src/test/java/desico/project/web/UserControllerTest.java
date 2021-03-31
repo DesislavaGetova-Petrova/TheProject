@@ -56,7 +56,7 @@ public class UserControllerTest {
     @Test
     void registerShouldReturnValidStatusAndView() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get(
-                 "users/register"
+                 "/users/register"
         )).
                 andExpect(status().isOk()).
                 andExpect(view().name("register"));
