@@ -14,7 +14,7 @@ import java.util.List;
 public interface LessonService {
 
     void addLesson(LessonServiceModel lessonServiceModel) throws IOException;
-    List<LessonEntity> findAll();
+//    List<LessonEntity> findAll();
     List<LessonViewModel> findAllLessons();
     void deleteLesson(String id);
     boolean lessonNameExists(String lessonName);
