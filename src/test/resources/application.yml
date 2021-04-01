@@ -3,19 +3,21 @@ carousel:
     refresh-cron: 0 */15 * * * *
 cloudinary:
     api-key: 512268179821855
-    api-secret: ${CLOUDINARY_SECRET}
+    api-secret: $"{CLOUDINARY_SECRET}"
     cloud-name: doma6noto
 log:
     delete-cron: '* */15 * * * *'
 server:
     port: 8000
 spring:
-    datasource:
-        driverClassName: com.mysql.cj.jdbc.Driver
-        password: root
-        url: jdbc:mysql://localhost:3306/project?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
-        username: root
+#    datasource:
+#        driverClassName: com.mysql.cj.jdbc.Driver
+#        password: root
+#        url: jdbc:mysql://localhost:3306/project?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+#        username: root
     jpa:
+        #For H2 Database
+        database-platform: org.hibernate.dialect.H2Dialect
         hibernate:
             ddl-auto: create-drop
         open-in-view: false
@@ -32,6 +34,7 @@ spring:
         hiddenmethod:
             filter:
                 enabled: true
+
 logging:
     level:
          root: info

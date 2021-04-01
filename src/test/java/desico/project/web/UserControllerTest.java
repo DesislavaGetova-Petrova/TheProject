@@ -5,6 +5,8 @@ import desico.project.model.entity.UserRoleEntity;
 import desico.project.model.enums.UserRole;
 import desico.project.repository.UserRepository;
 import desico.project.repository.UserRoleRepository;
+import desico.project.service.CloudinaryService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@AutoConfigureTestDatabase
+
 public class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -34,23 +36,24 @@ public class UserControllerTest {
     private UserRepository userRepository;
     @Autowired
     private UserRoleRepository userRoleRepository;
+    @MockBean
+    CloudinaryService mockCloudinaryService;
 
     @BeforeEach
     public void init() throws IOException {
+        userRoleRepository.deleteAll();
+        userRepository.deleteAll();
         UserEntity userEntity = new UserEntity();
-
-        if (userRoleRepository.count() == 0) {
             UserRoleEntity userRoleEntity = new UserRoleEntity();
             userRoleEntity.setRole(UserRole.USER);
             userRoleRepository.save(userRoleEntity);
             userEntity.setUsername("pesho").setEmail("p@p").setPassword("password").setRoles(List.of(userRoleEntity));
             userRepository.save(userEntity);
-        }
-        if (userRepository.count() == 0){
-             UserRoleEntity role = userRoleRepository.findByRole(UserRole.USER).get();
-            userEntity.setUsername("pesho").setEmail("p@p").setPassword("password").setRoles(List.of(role));
-            userRepository.save(userEntity);
-        }
+              }
+    @AfterEach
+    public void tearDown() {
+        userRoleRepository.deleteAll();
+        userRepository.deleteAll();
     }
 
     @Test

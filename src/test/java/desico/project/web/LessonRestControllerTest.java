@@ -24,8 +24,7 @@ public class LessonRestControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-    @Autowired
-    private UserRepository userRepository;
+
     @Autowired
     private UnitNameRepository unitNameRepository;
     @Autowired
@@ -34,7 +33,6 @@ public class LessonRestControllerTest {
     private LessonRepository lessonRepository;
     @Autowired
     private LogRepository logRepository;
-
 
 
     @Test
