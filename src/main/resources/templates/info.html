@@ -11,12 +11,19 @@
                 <img src="/img/sbornik.png" alt="Exercise picture" width="100%">
                 <div class="text-center">
                     <p></p>
+                    <div id="ajax">
+                        <button type="button" onclick="loadDoc()">КАКВО ПРЕДЛАГАМЕ</button>
+                    </div>
+                    <p></p>
                 <a th:href="@{/lesson/viewAll}">ВИЖТЕ НАШИТЕ КРАТКИ УРОЦИ </a>
                     <p></p>
                 <a th:href="@{/video/viewAll}">ВИЖТЕ ВСИЧКИ НАЛИЧНИ ВИДЕО РЕШЕНИЯ </a>
                     <p></p>
                 <a th:href="@{/unit/view}">ПОТЪРСЕТЕ ПО РЕШЕНИЯ ПО РАЗДЕЛИ </a>
+
                 </div>
+
+
             </section>
         </div>
             <div class="col-lg-7 my-auto ">
@@ -51,5 +58,6 @@
     </section>
     <th:block th:include="~{fragments/fot}"></th:block>
 </main>
+<script th:src="@{/js/demo-ajax.js}"></script>
 </body>
 </html>

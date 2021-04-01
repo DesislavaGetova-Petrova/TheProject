@@ -118,7 +118,7 @@ private  final CommentService commentService;
         VideoViewModel videoViewModel = videoService.findById(id);
         model.addAttribute("video", videoViewModel);
         this.videoService.deleteVideo(id);
-        return  "redirect:/";
+        return  "redirect:/video/viewAll";
     }
 
     @GetMapping("/comment/{id}")
@@ -131,11 +131,8 @@ private  final CommentService commentService;
 
     @PostMapping("/comment")
     public String commentCreate(@ModelAttribute("commentServiceModel") CommentServiceModel commentServiceModel ) {
-
-
-
         this.commentService.createComment(commentServiceModel);
-        return  "redirect:/";
+        return  "redirect:/video/viewAll";
     }
 
 
