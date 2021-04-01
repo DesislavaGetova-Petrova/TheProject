@@ -41,20 +41,20 @@ public class UserControllerTest {
 
     @BeforeEach
     public void init() throws IOException {
-        userRoleRepository.deleteAll();
-        userRepository.deleteAll();
-        UserEntity userEntity = new UserEntity();
+
             UserRoleEntity userRoleEntity = new UserRoleEntity();
             userRoleEntity.setRole(UserRole.USER);
             userRoleRepository.save(userRoleEntity);
+
+            UserEntity userEntity = new UserEntity();
             userEntity.setUsername("pesho").setEmail("p@p").setPassword("password").setRoles(List.of(userRoleEntity));
             userRepository.save(userEntity);
               }
-    @AfterEach
-    public void tearDown() {
-        userRoleRepository.deleteAll();
-        userRepository.deleteAll();
-    }
+//    @AfterEach
+//    public void tearDown() {
+//        userRoleRepository.deleteAll();
+//        userRepository.deleteAll();
+//    }
 
     @Test
     void registerShouldReturnValidStatusAndView() throws Exception {

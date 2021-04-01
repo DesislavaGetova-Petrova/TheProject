@@ -50,14 +50,16 @@ public class LessonControllerTest {
         );
         testData.init();
         testLessonId = testData.getTestLessonId();
+
     }
 
-    @AfterEach
-    public void tearDown() {
-        testData.cleanUp();
-    }
+//    @AfterEach
+//    public void tearDown() {
+//        testData.cleanUp();
+//    }
+//
     @Test
-    @WithMockUser(value = "pesho", roles = {"USER", "ADMIN"})
+    @WithMockUser(value = "pesho", roles = {"USER","MODERATOR","ADMIN"})
     void testShouldReturnValidStatusViewNameAndModel() throws Exception {
 
 

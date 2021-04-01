@@ -31,8 +31,7 @@ public class LessonRestControllerTest {
     private ChapterNameRepository chapterNameRepository;
     @Autowired
     private LessonRepository lessonRepository;
-    @Autowired
-    private LogRepository logRepository;
+
 
 
     @Test
