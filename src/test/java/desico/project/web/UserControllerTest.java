@@ -23,6 +23,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.io.IOException;
 import java.util.List;
 
+import static desico.project.model.enums.UserRole.USER;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -30,31 +31,34 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 
 public class UserControllerTest {
+
     @Autowired
     private MockMvc mockMvc;
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
     private UserRoleRepository userRoleRepository;
+    @Autowired
+    private UserRepository userRepository;
     @MockBean
     CloudinaryService mockCloudinaryService;
+
+
 
     @BeforeEach
     public void init() throws IOException {
 
             UserRoleEntity userRoleEntity = new UserRoleEntity();
-            userRoleEntity.setRole(UserRole.USER);
+            userRoleEntity.setRole(USER);
             userRoleRepository.save(userRoleEntity);
 
             UserEntity userEntity = new UserEntity();
             userEntity.setUsername("pesho").setEmail("p@p").setPassword("password").setRoles(List.of(userRoleEntity));
             userRepository.save(userEntity);
-              }
-//    @AfterEach
-//    public void tearDown() {
-//        userRoleRepository.deleteAll();
-//        userRepository.deleteAll();
-//    }
+       }
+    @AfterEach
+    public void tearDown() {
+        userRepository.deleteAll();
+        userRoleRepository.deleteAll();
+    }
 
     @Test
     void registerShouldReturnValidStatusAndView() throws Exception {

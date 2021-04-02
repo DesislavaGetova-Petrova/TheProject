@@ -46,9 +46,11 @@ public class LessonTestData {
 
         void cleanUp() {
             logRepository.deleteAll();
-            unitNameRepository.deleteAll();
-            chapterNameRepository.deleteAll();
             lessonRepository.deleteAll();
+            chapterNameRepository.deleteAll();
+            unitNameRepository.deleteAll();
+
+
         }
 
         public String getTestLessonId() {

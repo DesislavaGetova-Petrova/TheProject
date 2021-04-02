@@ -8,6 +8,8 @@ import desico.project.model.entity.UnitNameEntity;
 
 import desico.project.repository.*;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -32,7 +34,12 @@ public class LessonRestControllerTest {
     @Autowired
     private LessonRepository lessonRepository;
 
-
+    @AfterEach
+    public void setup() {
+        lessonRepository.deleteAll();
+        chapterNameRepository.deleteAll();
+        unitNameRepository.deleteAll();
+    }
 
     @Test
     @WithMockUser(value = "pesho", roles = {"USER","MODERATOR","ADMIN"})
@@ -49,8 +56,6 @@ public class LessonRestControllerTest {
         LessonEntity lessonEntity=new LessonEntity();
         lessonEntity.setLessonUrl("/img/lesson/lesson.mp4").setLessonName("lessonName").setChapterName(chapterNameEntity);
         lessonEntity=lessonRepository.save(lessonEntity);
-
-
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/lesson/viewAll/api")).
