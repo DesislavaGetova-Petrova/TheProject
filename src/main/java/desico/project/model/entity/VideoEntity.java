@@ -39,7 +39,7 @@ public class VideoEntity extends BaseEntity{
         return this;
     }
 
-    @Column(nullable = false,unique = true, name="video_url")
+    @Column( name="video_url",nullable = false,unique = true)
     public String getVideoUrl() {
         return videoUrl;
     }

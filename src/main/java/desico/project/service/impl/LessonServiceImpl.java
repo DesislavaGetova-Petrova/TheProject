@@ -34,10 +34,6 @@ public class LessonServiceImpl implements LessonService {
         this.lessonRepository.saveAndFlush(lessonEntity);
     }
 
-//    @Override
-//    public List<LessonEntity> findAll() {
-//        return this.lessonRepository.findAll();
-//    }
 
     @Override
     public List<LessonViewModel> findAllLessons() {

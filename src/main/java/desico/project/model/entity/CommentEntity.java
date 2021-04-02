@@ -49,7 +49,7 @@ public class CommentEntity extends BaseEntity {
         this.videoEntity = videoEntity;
         return this;
     }
-
+    @Column(name = "date_time")
     public LocalDateTime getDateTime() {
         return dateTime;
     }

@@ -11,10 +11,6 @@ public interface UnitNameService {
     void seedUnitNames();
     UnitNameEntity findByUnitName(String unitName);
     List<UnitNameEntity> findAll();
-
-
-
-
     List<String> findAllUnitNames();
 
 

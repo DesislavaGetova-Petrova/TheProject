@@ -9,6 +9,7 @@ import desico.project.repository.CommentRepository;
 import desico.project.service.CommentService;
 import desico.project.service.UserService;
 import desico.project.service.VideoService;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -66,4 +67,5 @@ public class CommentServiceImpl implements CommentService {
                 })
                 .collect(Collectors.toList());
     }
+
 }

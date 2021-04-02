@@ -31,7 +31,7 @@ public class LessonAddBindingModel {
         return this;
     }
     @NotEmpty(message = "Полето не може да е празно!")
-//    @Pattern(regexp ="\\/img\\/lesson\\/*.+",message = "Трябва да отговаря на модела /img/lesson/*.mp4")
+    @Pattern(regexp ="\\/img\\/lesson\\/*.+",message = "Трябва да отговаря на модела /img/lesson/*.mp4")
     public String getLessonUrl() {
         return lessonUrl;
     }

@@ -33,8 +33,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                         antMatchers("/unit/add", "/chapter/add","/video/add","/video/addLimited","/video/delete","/lesson/add").hasRole("MODERATOR").
                         antMatchers("/roles/delete","/roles/add","/statistics","/comments").hasRole("ADMIN").
 
-
-
                 and().
 
                         formLogin().
