@@ -1,11 +1,10 @@
 package desico.project.service.impl;
 
 import desico.project.model.entity.LessonEntity;
-import desico.project.model.entity.VideoEntity;
 import desico.project.model.service.LessonServiceModel;
 import desico.project.model.view.LessonViewModel;
-import desico.project.model.view.VideoViewModel;
 import desico.project.repository.LessonRepository;
+import desico.project.repository.VideoRepository;
 import desico.project.service.ChapterNameService;
 import desico.project.service.LessonService;
 import org.modelmapper.ModelMapper;

@@ -2,15 +2,11 @@ package desico.project.service;
 
 import desico.project.model.entity.ChapterNameEntity;
 import desico.project.model.entity.LessonEntity;
-import desico.project.model.entity.VideoEntity;
 import desico.project.model.service.LessonServiceModel;
-import desico.project.model.service.VideoServiceModel;
-import desico.project.model.service.VideoServiceModelCloud;
 import desico.project.model.view.LessonViewModel;
-import desico.project.model.view.VideoViewModel;
+
 import desico.project.repository.LessonRepository;
 import desico.project.service.impl.LessonServiceImpl;
-import desico.project.service.impl.VideoServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +20,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -68,4 +68,12 @@ public class UserControllerTest {
                 andExpect(status().isOk()).
                 andExpect(view().name("register"));
     }
+    @Test
+    void loginrShouldReturnValidStatusAndView() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get(
+                "/users/login"
+        )).
+                andExpect(status().isOk()).
+                andExpect(view().name("login"));
+    }
 }

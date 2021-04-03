@@ -3,7 +3,6 @@ package desico.project.web;
 import desico.project.model.entity.ChapterNameEntity;
 import desico.project.model.entity.LessonEntity;
 import desico.project.model.entity.UnitNameEntity;
-import desico.project.model.entity.UserEntity;
 import desico.project.repository.*;
 
 
@@ -15,7 +14,7 @@ public class LessonTestData {
     private LessonRepository lessonRepository;
     private LogRepository logRepository;
 
-    public LessonTestData( UnitNameRepository unitNameRepository, ChapterNameRepository chapterNameRepository, LessonRepository lessonRepository, LogRepository logRepository) {
+    public LessonTestData(UnitNameRepository unitNameRepository, ChapterNameRepository chapterNameRepository, LessonRepository lessonRepository, LogRepository logRepository) {
 
         this.unitNameRepository = unitNameRepository;
         this.chapterNameRepository = chapterNameRepository;
