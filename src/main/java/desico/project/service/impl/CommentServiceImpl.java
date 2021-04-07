@@ -14,6 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,10 +56,10 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<CommentViewModel> findAllComments() {
-        return commentRepository
+        List<CommentViewModel> collect = commentRepository
                 .findAll()
                 .stream()
-                .map(commentEntity ->  {
+                .map(commentEntity -> {
                     CommentViewModel commentViewModel = new CommentViewModel();
                     commentViewModel.setAuthor(commentEntity.getUserEntity().getUsername());
                     commentViewModel.setVideo(commentEntity.getVideoEntity().getVideoName());
@@ -66,6 +68,14 @@ public class CommentServiceImpl implements CommentService {
                     return commentViewModel;
                 })
                 .collect(Collectors.toList());
+
+        Collections.sort(collect, new Comparator<CommentViewModel>() {
+            public int compare(CommentViewModel o1, CommentViewModel o2) {
+                return o1.getDateTime().compareTo(o2.getDateTime());
+            }
+        });
+        return collect;
+
     }
 
 }
