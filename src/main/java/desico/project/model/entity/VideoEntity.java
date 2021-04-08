@@ -57,7 +57,7 @@ public class VideoEntity extends BaseEntity{
         this.description = description;
         return this;
     }
-    @OneToMany(mappedBy = "videoEntity", fetch = FetchType.EAGER,cascade= {CascadeType.ALL})
+    @OneToMany(mappedBy = "videoEntity",targetEntity = CommentEntity.class, fetch = FetchType.EAGER,cascade= {CascadeType.MERGE})
     public Set<CommentEntity> getComments() {
         return comments;
     }

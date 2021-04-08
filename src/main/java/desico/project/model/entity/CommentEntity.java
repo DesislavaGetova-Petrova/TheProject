@@ -1,9 +1,9 @@
 package desico.project.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -31,6 +31,7 @@ public class CommentEntity extends BaseEntity {
 
 
     @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     public UserEntity getUserEntity() {
         return userEntity;
     }
@@ -40,7 +41,8 @@ public class CommentEntity extends BaseEntity {
         return this;
     }
 
-    @ManyToOne
+    @ManyToOne( fetch = FetchType.EAGER,cascade= {CascadeType.MERGE})
+    @JoinColumn(name = "video_id", referencedColumnName = "id")
     public VideoEntity getVideoEntity() {
         return videoEntity;
     }

@@ -2,12 +2,22 @@ package desico.project.model.view;
 import java.time.LocalDateTime;
 
 public class CommentViewModel {
+    private String id;
     private String textContent;
     private String author;
     private String video;
     private LocalDateTime dateTime;
 
     public CommentViewModel() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public CommentViewModel setId(String id) {
+        this.id = id;
+        return this;
     }
 
     public String getTextContent() {

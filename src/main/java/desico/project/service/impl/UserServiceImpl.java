@@ -1,7 +1,9 @@
 package desico.project.service.impl;
 
+import desico.project.model.entity.CommentEntity;
 import desico.project.model.entity.UserEntity;
 import desico.project.model.entity.UserRoleEntity;
+import desico.project.model.entity.VideoEntity;
 import desico.project.model.enums.UserRole;
 import desico.project.model.service.UserRegistrationServiceModel;
 import desico.project.repository.UserRepository;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -140,6 +143,8 @@ public class UserServiceImpl implements UserService {
         userEntity.setRoles(newUserRolls);
         userRepository.save(userEntity);
     }
+
+
 
     @Override
     public UserEntity findByName(String username) {

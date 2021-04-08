@@ -22,6 +22,7 @@
                         <th>Video</th>
                         <th>Username</th>
                         <th>Comment</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,7 @@
                         <td th:text="*{video}"></td>
                         <td th:text="*{author}"></td>
                         <td th:text="*{textContent}"></td>
+                        <td><a th:href="@{/comments/delete/{id}(id =*{id})}" button type="button" class="btn-sm btn-outline-secondary">Изтрий</a></td>
                     </tr>
                     </tbody>
                 </table>

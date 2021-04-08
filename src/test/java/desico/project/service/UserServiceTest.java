@@ -1,9 +1,6 @@
 package desico.project.service;
 
-import desico.project.model.entity.ChapterNameEntity;
-import desico.project.model.entity.UserEntity;
-import desico.project.model.entity.UserRoleEntity;
-import desico.project.model.entity.VideoEntity;
+import desico.project.model.entity.*;
 import desico.project.model.enums.UserRole;
 import desico.project.repository.UserRepository;
 import desico.project.repository.UserRoleRepository;
@@ -93,4 +90,17 @@ public class UserServiceTest {
         Mockito.verify(mockUserRepository).save(user);
     }
 
+//    public UserEntity findByName(String username) {
+//        return userRepository
+//                .findByUsername(username)
+//                .orElseThrow(IllegalArgumentException::new);
+//    }
+   @Test
+    public void ByUnitNameTest(){
+        Assertions.assertThrows(
+                IllegalArgumentException.class, () -> {
+                    userService.findByName("name");
+                }
+        );
+}
 }

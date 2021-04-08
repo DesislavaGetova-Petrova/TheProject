@@ -2,7 +2,9 @@ package desico.project.model.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -11,6 +13,7 @@ public class UserEntity extends BaseEntity {
     private String password;
     private String email;
     private List<UserRoleEntity> roles = new ArrayList<>();
+    private Set<CommentEntity> comments=new HashSet<>();
 
     public UserEntity() {
     }
@@ -52,6 +55,16 @@ public class UserEntity extends BaseEntity {
     }
     public UserEntity addRole(UserRoleEntity roleEntity) {
         this.roles.add(roleEntity);
+        return this;
+    }
+    @OneToMany(mappedBy = "userEntity",targetEntity = CommentEntity.class, fetch = FetchType.EAGER,cascade= {CascadeType.ALL})
+
+    public Set<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public UserEntity setComments(Set<CommentEntity> comments) {
+        this.comments = comments;
         return this;
     }
 }

@@ -31,7 +31,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                         antMatchers("/","/info","/offer","/users/login", "/users/register").permitAll().
                         antMatchers("/video/view", "/unit/view","/chapter/view","/video/viewAll","/video/comment","/lesson/viewAll").authenticated().
                         antMatchers("/unit/add", "/chapter/add","/video/add","/video/addLimited","/video/delete","/lesson/add").hasRole("MODERATOR").
-                        antMatchers("/roles/delete","/roles/add","/statistics","/comments").hasRole("ADMIN").
+                        antMatchers("/roles/delete","/roles/add","/statistics","/comments","/comments/delete").hasRole("ADMIN").
 
                 and().
 

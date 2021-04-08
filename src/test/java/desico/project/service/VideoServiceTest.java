@@ -1,15 +1,13 @@
 package desico.project.service;
 
-import com.google.gson.Gson;
 import desico.project.model.entity.ChapterNameEntity;
-import desico.project.model.entity.UnitNameEntity;
+import desico.project.model.entity.CommentEntity;
 import desico.project.model.entity.VideoEntity;
-import desico.project.model.service.UnitNameServiceModel;
 import desico.project.model.service.VideoServiceModel;
 import desico.project.model.service.VideoServiceModelCloud;
 import desico.project.model.view.VideoViewModel;
+import desico.project.repository.CommentRepository;
 import desico.project.repository.VideoRepository;
-import desico.project.service.impl.UnitNameServiceImpl;
 import desico.project.service.impl.VideoServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,12 +17,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -39,11 +34,14 @@ public class VideoServiceTest {
     ChapterNameService mockChapterNameService;
     @Mock
     CloudinaryService mockCloudinaryService;
+    @Mock
+    CommentRepository mockCommentRepository;
+
 
     @BeforeEach
     public  void init() {
         mockModelMapper = new ModelMapper();
-        videoService=new VideoServiceImpl(mockVideoRepository,mockModelMapper,mockChapterNameService,mockCloudinaryService);
+        videoService=new VideoServiceImpl(mockVideoRepository,mockModelMapper,mockChapterNameService,mockCloudinaryService, mockCommentRepository);
     }
 
     @Test
@@ -52,9 +50,11 @@ public class VideoServiceTest {
         video.setChapterName(new ChapterNameEntity(){{setChapterName("ChapterName");}});
         video.setVideoName("video");
         video.setVideoUrl("videoUrl");
-        Mockito.when(mockVideoRepository.findById(video.getId())).thenReturn(Optional.of(video));
+        Set<CommentEntity> comments=new HashSet<>();
+        video.setComments(comments);
+        Mockito.when(mockVideoRepository.getVideoById(video.getId())).thenReturn(Optional.of(video));
         videoService.deleteVideo(video.getId());
-        Mockito.verify(mockVideoRepository).delete(video);
+        Assertions.assertEquals(0, videoService.findAll().size());
     }
     @Test
     void findAllVideosTest(){

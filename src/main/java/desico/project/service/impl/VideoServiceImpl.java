@@ -1,11 +1,12 @@
 package desico.project.service.impl;
 
 import desico.project.model.entity.ChapterNameEntity;
+import desico.project.model.entity.CommentEntity;
 import desico.project.model.entity.VideoEntity;
-import desico.project.model.service.LogServiceModel;
 import desico.project.model.service.VideoServiceModel;
 import desico.project.model.service.VideoServiceModelCloud;
 import desico.project.model.view.VideoViewModel;
+import desico.project.repository.CommentRepository;
 import desico.project.repository.VideoRepository;
 import desico.project.service.ChapterNameService;
 import desico.project.service.CloudinaryService;
@@ -14,10 +15,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.transaction.Transactional;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,15 +27,19 @@ public class VideoServiceImpl implements VideoService {
     private final ModelMapper modelMapper;
     private final ChapterNameService chapterNameService;
     private final CloudinaryService cloudinaryService;
+    private final CommentRepository commentRepository;
+
+
 
     public VideoServiceImpl(VideoRepository videoRepository,
                             ModelMapper modelMapper,
                             ChapterNameService chapterNameService,
-                            CloudinaryService cloudinaryService) {
+                            CloudinaryService cloudinaryService, CommentRepository commentRepository) {
         this.videoRepository = videoRepository;
         this.modelMapper = modelMapper;
         this.chapterNameService = chapterNameService;
         this.cloudinaryService = cloudinaryService;
+        this.commentRepository = commentRepository;
     }
 
     @Override
@@ -113,12 +118,21 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-
     public void deleteVideo(String id) {
-        VideoEntity targetVideo = this.videoRepository.findById(id).orElse(null);
-        this.videoRepository.delete(targetVideo);
-
+        VideoEntity video=this.videoRepository.getVideoById(id).get();
+        Set<CommentEntity> comments=video.getComments();
+        if(comments!=null){
+            for(CommentEntity comment:comments){
+                String commentId=comment.getId();
+                comment.setVideoEntity(null);
+                comment.setUserEntity(null);
+                this.commentRepository.saveAndFlush(comment);
+                this.commentRepository.deleteById(commentId);
+            }
+            video.getComments().clear();
+        }
+        video.setComments(new HashSet<>());
+        this.videoRepository.saveAndFlush(video);
+        this.videoRepository.deleteById(id);
     }
-
-
 }

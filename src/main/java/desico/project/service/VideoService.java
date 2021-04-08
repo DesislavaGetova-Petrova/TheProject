@@ -1,6 +1,7 @@
 package desico.project.service;
 
 import desico.project.model.entity.ChapterNameEntity;
+import desico.project.model.entity.CommentEntity;
 import desico.project.model.entity.VideoEntity;
 import desico.project.model.service.VideoServiceModel;
 import desico.project.model.service.VideoServiceModelCloud;
@@ -30,5 +31,6 @@ public interface VideoService {
     List<VideoViewModel> findAllVideos();
 
     void deleteVideo(String id);
+
 
 }
