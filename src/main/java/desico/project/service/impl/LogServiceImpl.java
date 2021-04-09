@@ -3,6 +3,7 @@ package desico.project.service.impl;
 import desico.project.model.entity.LogEntity;
 import desico.project.model.entity.UserEntity;
 import desico.project.model.service.LogServiceModel;
+import desico.project.model.view.CommentViewModel;
 import desico.project.repository.LogRepository;
 import desico.project.service.LogService;
 import desico.project.service.UserService;
@@ -13,6 +14,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,10 +59,9 @@ public class LogServiceImpl implements LogService {
     }
 
 
-
     @Override
     public List<LogServiceModel> findAllLogs() {
-        return logRepository
+        List<LogServiceModel> collect = logRepository
                 .findAll()
                 .stream()
                 .map(logEntity -> {
@@ -69,6 +71,13 @@ public class LogServiceImpl implements LogService {
                     return logServiceModel;
                 })
                 .collect(Collectors.toList());
+
+                Collections.sort(collect, new Comparator<LogServiceModel>() {
+                public int compare(LogServiceModel o1, LogServiceModel o2) {
+                return o1.getDateTime().compareTo(o2.getDateTime());
+                }
+        });
+        return collect;
     }
 }
 
